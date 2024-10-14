@@ -1,0 +1,43 @@
+server:
+  port: ${CUSTOM.SERVER.PORT:8889}
+
+encrypt:
+  key: ${ENCRYPT.KEY:employees-promotion-secret-key}
+
+spring:
+  application:
+    name: monitoring-service
+
+logging:
+  file:
+    name: ${LOG.FILE.PATH:./logs}/${LOG.FILE.NAME:monitoring-service.log}
+
+management:
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN.ENDPOINT:http://localhost:9411/api/v2/spans}
+  auditevents:
+    enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /actuator
+    health:
+      show-details: always
+      show-components: always
+  info:
+    env:
+      enabled: true
+  health:
+    env:
+      enabled: true
+  endpoint:
+    health:
+      group:
+        custom:
+          include: diskSpace, ping, memory, mem
+          show-component: always
+          show-details: always
+    logfile:
+      external_file: ${LOG.FILE.PATH:./logs}/${LOG.FILE.NAME:monitoring-service.log}

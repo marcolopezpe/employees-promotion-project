@@ -1,0 +1,30 @@
+services:
+  pg-employee:
+    image: bitnami/postgresql:17.0.0
+    container_name: pg-employee
+    restart: unless-stopped
+    ports:
+      - "15432:5432"
+    environment:
+      POSTGRES_DB: db_employee
+      POSTGRES_PASSWORD: PGEmployeePass123
+      TZ: America/Lima
+      PGTZ: America/Lima
+    volumes:
+      - /Users/marcolopez/Workspace/volumes/ep-net/pg-employee:/var/lib/postgresql/data
+      - ./scripts/pg_employee_init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - default
+  adminer:
+    image: docker.io/shyim/adminerevo
+    container_name: adminer
+    restart: unless-stopped
+    ports:
+      - "9020:8080"
+    networks:
+      - default
+
+networks:
+  default:
+    external: true
+    name: employees-promotion-net

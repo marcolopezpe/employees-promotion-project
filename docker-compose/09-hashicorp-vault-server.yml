@@ -1,0 +1,22 @@
+services:
+  vault:
+    image: hashicorp/vault:1.9.3
+    container_name: vault
+    ports:
+      - "8201:8201"
+    restart: unless-stopped  
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: "token-initial-for-root"
+      VAULT_DEV_LISTEN_ADDRESS: "0.0.0.0:8201"
+    volumes:
+      - /Users/marcolopez/Workspace/volumes/ep-net/vault/vault-data:/vault/file/:rw
+      - /Users/marcolopez/Workspace/volumes/ep-net/vault/vault-config:/vault/config/:rw
+    cap_add:
+      - IPC_LOCK
+    networks:
+      - default
+
+networks:
+  default:
+    external: true
+    name: employees-promotion-net

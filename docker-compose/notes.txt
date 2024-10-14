@@ -1,0 +1,4 @@
+Notes:
+======
+host common: localhost
+host alternative: host.docker.internal

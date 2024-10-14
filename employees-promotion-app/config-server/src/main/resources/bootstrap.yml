@@ -1,0 +1,54 @@
+server:
+  port: ${CUSTOM.SERVER.PORT:8888}
+
+encrypt:
+  key: ${ENCRYPT.KEY:employees-promotion-secret-key}
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/marcolopezpe/employees-promotion-project.git
+          default-label: ${GIT.DEFAULT.LABEL:main}
+          clone-on-start: true
+          force-pull: true
+          refresh-rate: 15
+          search-paths: config-server-files
+        encrypt:
+          enabled: false
+      override-none: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 60
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA.SERVER.HOSTNAME:http://localhost:8761/eureka/}
+    registerWithEureka: true
+    fetchRegistry: true
+    healthcheck:
+      enabled: true
+    refresh:
+      enable: true
+
+management:
+  auditevents:
+    enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /actuator
+  endpoint:
+    health:
+      group:
+        custom:
+          include: diskSpace, ping, memory, mem
+          show-details: always
+  info:
+    env:
+      enabled: true
