@@ -18,13 +18,13 @@ spring:
       ddl-auto: none
   cloud:
     vault:
-      uri: http://localhost:8201
+      host: localhost
+      port: 8201
       token: token-initial-for-root
       scheme: http
       kv:
-        enabled: true
-        backend: secret
-        default-context: application
+        backend: kv
+        default-context: epp/dev/ms-employee
 
 logging:
   level:
