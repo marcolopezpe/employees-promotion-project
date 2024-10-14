@@ -1,0 +1,11 @@
+encrypt:
+  key: ${ENCRYPT.KEY:employee-promotion-secret-key}
+
+spring:
+  application:
+    name: ms-employee
+  cloud:
+    config:
+      uri: ${CONFIG.SERVER.HOSTNAME:http://localhost:8888}
+      enabled: true
+      profile: ${CONFIG.SERVER.PROFILE:dev}

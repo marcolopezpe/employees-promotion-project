@@ -1,0 +1,65 @@
+server:
+  port: ${CUSTOM.SERVER.PORT:8000}
+
+encrypt:
+  key: ${ENCRYPT.KEY:employees-promotion-secret-key}
+
+spring:
+  application:
+    name: ms-employee
+  datasource:
+    url: jdbc:postgresql://${db-host}:${db-port}/${db-name}
+    username: '${db-username}'
+    password: '${db-password}'
+    driver-class-name: 'org.postgresql.Driver'
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  cloud:
+    vault:
+      uri: http://localhost:8201
+      token: token-initial-for-root
+      scheme: http
+      kv:
+        enabled: true
+        backend: secret
+        default-context: application
+
+logging:
+  level:
+    org.hibernate.SQL: TRACE
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+  file:
+    name: ${LOG.FILE.PATH:./logs}/${LOG.FILE.NAME:ms-employee.log}
+
+management:
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN.ENDPOINT:http://localhost:9411/api/v2/spans}
+  auditevents:
+    enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /actuator
+    health:
+      show-details: always
+      show-components: always
+  info:
+    env:
+      enabled: true
+  health:
+    env:
+      enabled: true
+  endpoint:
+    health:
+      group:
+        custom:
+          include: diskSpace, ping, memory, mem
+          show-component: always
+          show-details: always
+    logfile:
+      external_file: ${LOG.FILE.PATH:./logs}/${LOG.FILE.NAME:ms-employee.log}
