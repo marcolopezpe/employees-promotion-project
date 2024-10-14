@@ -12,6 +12,9 @@ db:
   password: '{vault}:epp/dev/ms-employee#db-password'
 
 spring:
+  autoconfigure:
+    exclue:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   application:
     name: ms-employee
   datasource:
