@@ -1,4 +1,4 @@
-package pe.marcolopez.apps.licencium.monitoringservice;
+package pe.marcolopez.apps.epp.monitoringservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

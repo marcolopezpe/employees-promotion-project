@@ -1,4 +1,4 @@
-package pe.marcolopez.apps.licencium.monitoringservice;
+package pe.marcolopez.apps.epp.monitoringservice;
 
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
