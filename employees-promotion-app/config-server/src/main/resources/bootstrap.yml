@@ -5,6 +5,8 @@ encrypt:
   key: ${ENCRYPT.KEY:employees-promotion-secret-key}
 
 spring:
+  profiles:
+    active: vault
   application:
     name: config-server
   cloud:
@@ -19,7 +21,18 @@ spring:
           search-paths: config-server-files
         encrypt:
           enabled: false
+        vault:
+          host: localhost
+          port: 8201
+          scheme: http
+          backend: secret
+          defaultKey: application
+          kvVersion: 2
+          authentication: TOKEN
+          token: ${VAULT_TOKEN:token-initial-for-root}
+          skipSslValidation: true
       override-none: true
+
 
 eureka:
   instance:
