@@ -4,13 +4,20 @@ server:
 encrypt:
   key: ${ENCRYPT.KEY:employees-promotion-secret-key}
 
+db:
+  host: '{vault}:epp/dev/ms-employee#db-host'
+  port: '{vault}:epp/dev/ms-employee#db-port'
+  name: '{vault}:epp/dev/ms-employee#db-name'
+  username: '{vault}:epp/dev/ms-employee#db-username'
+  password: '{vault}:epp/dev/ms-employee#db-password'
+
 spring:
   application:
     name: ms-employee
   datasource:
-    url: jdbc:postgresql://${db-host}:${db-port}/${db-name}
-    username: '${db-username}'
-    password: '${db-password}'
+    url: jdbc:postgresql://${db.host}:${db.port}/${db.name}
+    username: '${db.username}'
+    password: '${db.password}'
     driver-class-name: 'org.postgresql.Driver'
   jpa:
     show-sql: true
@@ -20,11 +27,13 @@ spring:
     vault:
       host: localhost
       port: 8201
-      token: token-initial-for-root
       scheme: http
-      kv:
-        backend: kv
-        default-context: epp/dev/ms-employee
+      backend: secret
+      kvVersion: 2
+      defaultKey: application
+      authentication: TOKEN
+      token: token-initial-for-root
+      skipSslValidation: true
 
 logging:
   level:
