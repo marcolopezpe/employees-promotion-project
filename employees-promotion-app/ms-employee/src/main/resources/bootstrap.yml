@@ -8,4 +8,15 @@ spring:
     config:
       uri: ${CONFIG.SERVER.HOSTNAME:http://localhost:8888}
       enabled: true
-      profile: ${CONFIG.SERVER.PROFILE:dev}
+      profile: ${CONFIG.SERVER.PROFILE:dev}, vault
+    server:
+      vault:
+        host: localhost
+        port: 8201
+        scheme: http
+        backend: secret
+        defaultKey: application
+        kvVersion: 2
+        authentication: TOKEN
+        token: ${VAULT_TOKEN:token-initial-for-root}
+        skipSslValidation: true

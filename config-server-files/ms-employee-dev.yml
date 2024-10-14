@@ -23,17 +23,6 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
-  cloud:
-    vault:
-      host: localhost
-      port: 8201
-      scheme: http
-      backend: secret
-      kvVersion: 2
-      defaultKey: application
-      authentication: TOKEN
-      token: token-initial-for-root
-      skipSslValidation: true
 
 logging:
   level:
