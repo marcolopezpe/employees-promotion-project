@@ -5,19 +5,9 @@ encrypt:
   key: ${ENCRYPT.KEY:employees-promotion-secret-key}
 
 spring:
-  main:
-    allow-bean-definition-overriding: true
   application:
     name: config-server
-  config:
-    import: vault://
   cloud:
-    vault:
-      scheme: http
-      host: localhost
-      port: 8201
-      application-name: config-server
-      token: ${VAULT_TOKEN:token-initial-for-root}
     config:
       server:
         git:
@@ -30,7 +20,6 @@ spring:
         encrypt:
           enabled: false
       override-none: true
-
 
 eureka:
   instance:

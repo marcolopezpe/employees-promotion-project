@@ -35,3 +35,9 @@ docker exec -it kafka-broker-1 kafka-topics --bootstrap-server localhost:19092 -
 docker exec -it kafka-broker-1 kafka-topics --bootstrap-server localhost:19092 --if-not-exists --create --topic topic-promotion-employees --partitions 1 --replication-factor 1
 
 #kafka-avro-console-producer --broker-list kafka-broker-1:9092 --topic topic-eligible-employees --property schema.registry.url=http://schema-registry:8081 --property value.schema='{"type":"record","name":"logLineForward","fields":[{"name":"ip","type":"string"}]}'
+
+echo ''
+echo '###########################################################'
+echo 'Creacion de los secretos en Hashicorp Vault'
+echo '###########################################################'
+docker exec -it vault vault kv put secret/ms-employee db-host=ms-employee db-name=db_employee db-password=PGEmployeePass123 db-port=5432 db-username=postgres

@@ -7,8 +7,8 @@ CREATE TABLE tb_employee (
     address     	varchar(500),
     email           varchar(100),
     entry_date      date,
-    created_at      timestamp without time zone
+    created_at      timestamp
 );
 
-INSERT INTO tb_employee (firstname, lastname, address, entry_date, created_at)
-VALUES ('MARCO ANTONIO', 'LOPEZ CAMACHO', 'LIMA PERU', 'MARCOLOPEZPE@OUTLOOK.COM', '2023-10-15', now());
+INSERT INTO tb_employee (firstname, lastname, address, email, entry_date, created_at)
+VALUES ('MARCO ANTONIO', 'LOPEZ CAMACHO', 'LIMA PERU', 'MARCOLOPEZPE@OUTLOOK.COM', '2023-10-16', CURRENT_TIMESTAMP);

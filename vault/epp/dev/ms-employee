@@ -1,7 +1,0 @@
-{
-  "db-host": "localhost",
-  "db-name": "db_employee",
-  "db-password": "PGEmployeePass123",
-  "db-port": "15432",
-  "db-username": "postgres"
-}

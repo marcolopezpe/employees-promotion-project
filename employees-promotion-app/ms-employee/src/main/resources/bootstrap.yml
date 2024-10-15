@@ -12,7 +12,7 @@ spring:
     vault:
       scheme: http
       host: localhost
-      port: 8201
+      port: 8200
       application-name: ms-employee
       token: ${VAULT_TOKEN:token-initial-for-root}
     config:

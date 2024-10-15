@@ -16,6 +16,7 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
+      dialect: org.hibernate.dialect.PostgreSQLDialect
 
 logging:
   level:
