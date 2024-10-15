@@ -5,11 +5,19 @@ encrypt:
   key: ${ENCRYPT.KEY:employees-promotion-secret-key}
 
 spring:
-  profiles:
-    active: vault
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: config-server
+  config:
+    import: vault://
   cloud:
+    vault:
+      scheme: http
+      host: localhost
+      port: 8201
+      application-name: config-server
+      token: ${VAULT_TOKEN:token-initial-for-root}
     config:
       server:
         git:
@@ -21,16 +29,6 @@ spring:
           search-paths: config-server-files
         encrypt:
           enabled: false
-        vault:
-          host: localhost
-          port: 8201
-          scheme: http
-          backend: secret
-          defaultKey: application
-          kvVersion: 2
-          authentication: TOKEN
-          token: ${VAULT_TOKEN:token-initial-for-root}
-          skipSslValidation: true
       override-none: true
 
 
