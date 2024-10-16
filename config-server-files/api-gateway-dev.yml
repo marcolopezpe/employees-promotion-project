@@ -1,0 +1,61 @@
+server:
+  port: ${CUSTOM.SERVER.PORT:8765}
+
+encrypt:
+  key: ${ENCRYPT.KEY:licencium-secret-key}
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: ms-employee
+          uri: lb://ms-employee
+          predicates:
+            - Path=/api/employee/**
+          filters:
+            - StripPrefix=2
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: '*'
+            allowedMethods: GET,POST,PUT,DELETE,OPTIONS
+
+config:
+  security:
+    privateKey: 3a27f63a56e28002f3d35b85aaa716d596039fbc942515f38f1e25d7100eb412
+
+logging:
+  file:
+    name: ${LOG.FILE.PATH:./logs}/${LOG.FILE.NAME:api-gateway.log}
+
+management:
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN.ENDPOINT:http://localhost:9411/api/v2/spans}
+  auditevents:
+    enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /actuator
+    health:
+      show-details: always
+      show-components: always
+  info:
+    env:
+      enabled: true
+  health:
+    env:
+      enabled: true
+  endpoint:
+    health:
+      group:
+        custom:
+          include: diskSpace, ping, memory, mem
+          show-component: always
+          show-details: always
+    logfile:
+      external_file: ${LOG.FILE.PATH:./logs}/${LOG.FILE.NAME:api-gateway.log}
