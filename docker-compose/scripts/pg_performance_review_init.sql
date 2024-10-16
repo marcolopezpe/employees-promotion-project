@@ -6,14 +6,14 @@ CREATE TABLE tb_eligible_group (
     year                int,
     month               int,
     date_evaluation     date,
-    created_at          timestamp without time zone
+    created_at          timestamp
 );
 
 CREATE TABLE tb_eligible_employee (
     id uuid             default gen_random_uuid() not null primary key,
     employee_id         uuid,
     eligible_group_id   uuid,
-    created_at          timestamp without time zone
+    created_at          timestamp
 );
 
 CREATE TABLE tb_parameter_eligible (
@@ -22,8 +22,8 @@ CREATE TABLE tb_parameter_eligible (
     description         varchar(500),
     parameter_key       varchar(100),
     parameter_value     varchar(100),
-    created_at          timestamp without time zone
+    created_at          timestamp
 );
 
 INSERT INTO tb_parameter_eligible (name, description, parameter_key, parameter_value, created_at)
-VALUES ('POR CANTIDAD DE AÑOS', 'EL EMPLEADO SERÁ PROMOVIDO SI TIENE AL MENOS ESTA CANTIDAD DE AÑOS EN LA EMPRESA.', 'YEARS_OF_ENTRY_DATE', '1', now());
+VALUES ('POR CANTIDAD DE AÑOS', 'EL EMPLEADO SERÁ PROMOVIDO SI TIENE AL MENOS ESTA CANTIDAD DE AÑOS EN LA EMPRESA.', 'YEARS_OF_ENTRY_DATE', '1', CURRENT_TIMESTAMP);

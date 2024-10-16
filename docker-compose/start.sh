@@ -40,4 +40,4 @@ echo ''
 echo '###########################################################'
 echo 'Creacion de los secretos en Hashicorp Vault'
 echo '###########################################################'
-docker exec -it vault vault kv put secret/ms-employee db-host=ms-employee db-name=db_employee db-password=PGEmployeePass123 db-port=5432 db-username=postgres
+docker exec -it vault vault kv put secret/ms-employee db-host=localhost db-name=db_employee db-password=PGEmployeePass123 db-port=15432 db-username=postgres
