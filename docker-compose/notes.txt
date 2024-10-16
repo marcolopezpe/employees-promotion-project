@@ -2,3 +2,4 @@ Notes:
 ======
 host common: localhost
 host alternative: host.docker.internal
+ascii: https://patorjk.com/software/taag/#p=testall&f=Graffiti&t=MS%20Employee
