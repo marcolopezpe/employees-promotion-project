@@ -25,7 +25,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository
                 .findAll()
                 .stream()
-                .map(employeeMapper::toEntity)
+                .map(employeeMapper::toQueryDTO)
                 .toList();
     }
 
@@ -33,7 +33,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     public EmployeeQueryDTO findById(UUID id) {
         return employeeRepository
                 .findById(id)
-                .map(employeeMapper::toEntity)
+                .map(employeeMapper::toQueryDTO)
                 .orElse(null);
+    }
+
+    @Override
+    public int updateLevel(UUID id, String level) {
+        return employeeRepository
+            .updateLevel(id, level);
     }
 }

@@ -10,4 +10,6 @@ public interface EmployeeService {
     List<EmployeeQueryDTO> findAll();
 
     EmployeeQueryDTO findById(UUID id);
+
+    int updateLevel(UUID id, String level);
 }

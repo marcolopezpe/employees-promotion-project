@@ -5,9 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pe.marcolopez.apps.epp.ms.employee.api.EmployeeAPI;
+import pe.marcolopez.apps.epp.ms.employee.dto.EmployeeCommandDTO;
 import pe.marcolopez.apps.epp.ms.employee.dto.EmployeeQueryDTO;
 import pe.marcolopez.apps.epp.ms.employee.service.EmployeeService;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -29,6 +29,13 @@ public class EmployeeREST implements EmployeeAPI {
     public ResponseEntity<EmployeeQueryDTO> findById(String id) {
         return ResponseEntity.ok(
                 employeeService.findById(UUID.fromString(id))
+        );
+    }
+
+    @Override
+    public ResponseEntity<Integer> updateLevel(EmployeeCommandDTO employeeCommandDTO) {
+        return ResponseEntity.ok(
+            employeeService.updateLevel(employeeCommandDTO.id(), employeeCommandDTO.level())
         );
     }
 }

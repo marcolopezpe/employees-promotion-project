@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pe.marcolopez.apps.epp.ms.employee.util.EmployeeLevel;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -24,7 +26,10 @@ public class EmployeeEntity {
     private String lastname;
     private String address;
     private String email;
+    private String currentLevel;
     @Column(columnDefinition = "DATE")
-    private LocalDate entryDate;
+    private LocalDate hireDate;
+    private Integer certifications;
+    private Integer productionProjects;
     private LocalDateTime createdAt;
 }

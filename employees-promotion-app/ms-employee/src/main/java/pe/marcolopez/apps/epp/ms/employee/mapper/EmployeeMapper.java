@@ -9,7 +9,7 @@ import pe.marcolopez.apps.epp.ms.employee.entity.EmployeeEntity;
 )
 public interface EmployeeMapper {
 
-    EmployeeQueryDTO toEntity(EmployeeEntity employeeEntity);
+    EmployeeEntity toEntity(EmployeeQueryDTO employeeQueryDTO);
 
-    EmployeeEntity toQueryDTO(EmployeeQueryDTO employeeQueryDTO);
+    EmployeeQueryDTO toQueryDTO(EmployeeEntity employeeEntity);
 }

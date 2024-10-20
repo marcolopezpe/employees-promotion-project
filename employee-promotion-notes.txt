@@ -1,0 +1,129 @@
+Proceso:
+=======
+1. Un empleado de RRHH crea ejecuta el proceso de Promocion de Nivel de Empleados.
+2. Este proceso evalua a los empleados.
+3. Los niveles son los siguientes:
+  - Junior
+  - Middle
+  - Senior
+  - Master
+4. Para cada nivel, se evalua los campos del empleado (fecha_ingreso, proyectos_produccion, certificaciones) segun la siguiente lista de criterios para cada nivel:
+  - Junior:
+    * 0 años de experiencia
+    * 0 proyectos pasados a produccion exitosamente
+    * 0 certificaciones oficiales
+  - Middle:
+    * 5 años de experiencia
+    * 3 proyectos pasados a produccion exitosamente
+    * 3 certificaciones oficiales
+  - Senior:
+    * 8 años de experiencia
+    * 5 proyectos pasados a produccion exitosamente
+    * 5 certificaciones oficiales
+  - Master:
+    * 15 años de experiencia
+    * 10 proyectos pasados a produccion exitosamente
+    * 10 certificaciones oficiales
+5. Luego de la evaluacion interna, con los criterios dinamicos, se obtiene el listado de empleados, con su nivel actual y nuevo nivel propuesto. Solo los empleados que aplican para un nuevo nivel se mostraran.
+6. Obteniendo el listado de empleados, se ejecuta la promocion y las notificaciones a los empleados se envian para sabser si desean subir de nivel o desea mantenerse en su actual nivel.
+7. El empleado puede aceptar o rechazar la promocion.
+8. Si el empleado rechaza la promocion, termina para el proceso.
+9. Si el empleado acepta la promocion, se agrega al listado de Promocion Propuesta de Empleados <Periodo>. Donde se le agrega al listado de propuestas para el periodo actual. El periodo esta definido por el año, ya que la promocion es una vez al año.
+10. Luego de la lista de promocion propuesta, se envia a cada lider directo de cada empleado, una notificacion, para su confirmacion de promocion a siguiente nivel.
+11. El Lider directo puede aprobar, rechazar o solicitar una entrevista con el empleado.
+12. Si el lider aprueba la promocion del empleado, se notifica al empleado, al de rh y al lider directo la promocion, registrandose en su historial de niveles del empleado.
+13. Si el lider rechaza la promocion del empleado, se solicita el motivo y luego de notifica al empleado, a rh y al lider directo, registrando en su historial de niveles del empleado.
+14. Si el lider solicitar entrevista con el empleado, se programa la entrevista para una cierta fecha, hora y lugar. El estado de la promocion del empleado queda en "ENTREVISTA SOLICITADA"
+15. El lider luego de la entrevista, evaluará nuevamente al empleado, donde ahora solo podrá aprobar o rechazar, realizando los puntos 12 o 13.
+16. Luego de la evaluacion del lider, sea directamente (punto 12 y 13) o via entrevista (punto 14 y 15), termina el proceso.
+17. El lider tambien puede visualizar el listado de promociones que tiene que realizar.
+
+
+
+Microservices:
+==============
+- MS Employee:
+  DB: db_employee
+  Tables:
+    tb_employee:
+      * id
+      * firstname
+      * lastname
+      * address
+      * email
+      * current_level
+      * hire_date
+      * certifications
+      * production_projects
+      * created_at
+    tb_level_history:
+      * id
+      * employee_id
+      * previous_level
+      * new_level
+      * change_date
+      * evaluated_by
+      * comments
+      * created_at
+  Endpoints:
+    - GET /employees
+    - GET /employees/{id}
+    - PUT /employees/level/{id}
+    - GET /level-histories
+    - GET /level-histories/employee/{id}
+    - POST /level-histories/employee
+- MS Criteria:
+  DB: db_criteria
+  Tables:
+    tb_criteria:
+      * id
+      * level
+      * description
+      * type
+      * expected_value
+      * created_at
+  Endpoints:
+    - GET /execute-process
+    - POST /elegible-employees-notification
+  Generate Event:
+    - elegible-employee-event.avsc
+- MS Command Promotion:
+  DB: db_command_promotion
+  Tables:
+    tb_promotion:
+      * id
+      * employee_id
+      * proposed_level
+      * status
+      * request_date
+      * decision_date
+      * leader_id
+      * leader_comments
+      * period
+      * created_at
+  Endpoints:
+    - POST /evaluate-promotion/{employeeId}
+  Generate Event:
+    - evaluated-employee-event.avsc
+- MS Query Promotion:
+  DB: db_query_promotion
+  Tables:
+    tb_promotion
+      * id
+      * employee_id
+      * employee_firstname
+      * employee_lastname
+      * proposed_level
+      * status
+      * request_date
+      * decision_date
+      * leader_id
+      * leader_firstname
+      * leader_lastname
+      * leader_comments
+      * period
+      * created_at
+  Endpoints:
+    - GET /promotions/leader/{leaderId}
+- MS Consumer Promotion
+- MS Notification

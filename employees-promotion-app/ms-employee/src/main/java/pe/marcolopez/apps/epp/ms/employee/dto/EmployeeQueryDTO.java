@@ -10,5 +10,8 @@ public record EmployeeQueryDTO (UUID id,
                                 String lastname,
                                 String address,
                                 String email,
-                                LocalDate entryDate) {
+                                String currentLevel,
+                                LocalDate hireDate,
+                                Integer certifications,
+                                Integer productionProjects) {
 }
