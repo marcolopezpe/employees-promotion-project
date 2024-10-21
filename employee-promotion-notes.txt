@@ -69,6 +69,7 @@ Microservices:
     - GET /employees
     - GET /employees/{id}
     - PUT /employees/level/{id}
+    - GET /eligible-employees?currentLevel=&years=&certifications=&projects=
     - GET /level-histories
     - GET /level-histories/employee/{id}
     - POST /level-histories/employee
@@ -83,8 +84,8 @@ Microservices:
       * expected_value
       * created_at
   Endpoints:
-    - GET /execute-process
-    - POST /elegible-employees-notification
+    - GET /criteria/eligible-employees
+    - POST /criteria/notify-eligible-employees
   Generate Event:
     - elegible-employee-event.avsc
 - MS Command Promotion:

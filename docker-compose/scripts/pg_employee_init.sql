@@ -7,6 +7,7 @@ CREATE TABLE tb_employee (
     address     	    varchar(500),
     email               varchar(100),
     current_level       varchar(10), -- JUNIOR/MIDDLE/SENIOR/MASTER
+    period_level        int,
     hire_date           date,
     certifications      int,
     production_projects int,
@@ -16,7 +17,7 @@ CREATE TABLE tb_employee (
 CREATE TABLE tb_level_history (
     id                  uuid default gen_random_uuid() not null primary key,
     employee_id         uuid,
-    previos_level       VARCHAR(10),
+    previous_level      VARCHAR(10),
     new_level           VARCHAR(10),
     change_date         date,
     evaluated_by        uuid,
@@ -40,7 +41,7 @@ VALUES (
     'LIMA PERU', 
     'MARCOLOPEZPE@OUTLOOK.COM', 
     'JUNIOR',
-    '2023-10-16',
-    0,
-    0,
+    '2028-10-16',
+    3,
+    3,
     CURRENT_TIMESTAMP);

@@ -13,7 +13,7 @@
 	<artifactId>ms-employee</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>ms-employee</name>
+	<name>ms-criteria</name>
 	<description>MS Employee for Employees Promotion Project</description>
 
 	<properties>

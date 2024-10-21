@@ -1,0 +1,31 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "employee-promotion",
+    "collectionId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+    "dateExported": "2024-10-21T03:01:29.298Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "1e966b62-a4df-4f4f-a45d-c604f14e7280",
+            "name": "ms-employee",
+            "containerId": "",
+            "created": "2024-10-16T06:02:05.062Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "faa70998-fba8-40ae-9fc0-3b10fa5302fb",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "1e966b62-a4df-4f4f-a45d-c604f14e7280",
+            "name": "http://localhost:8765/api/employee/employees",
+            "url": "http://localhost:8765/api/employee/employees",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-10-20T20:26:21.721Z",
+            "modified": "2024-10-20T20:26:21.721Z",
+            "headers": []
+        }
+    ],
+    "ref": "aJi1frGBN9yMNMgjZapvJSjuf_L6B9ClWAG4Q4_Z0w-tX-dd0D7jkRkDivqnnNC60VubnvDBPxD1EQz5yrzUyQ"
+}
