@@ -31,7 +31,7 @@ spring:
 resilience4j:
   circuitbreaker:
     instances:
-      cliente-service:
+      ms-employee:
         register-health-indicator: true
         failure-rate-threshold: 50
         minimum-number-of-calls: 5

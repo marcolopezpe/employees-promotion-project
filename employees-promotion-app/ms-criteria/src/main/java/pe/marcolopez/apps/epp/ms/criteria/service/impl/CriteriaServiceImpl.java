@@ -10,8 +10,6 @@ import pe.marcolopez.apps.epp.ms.criteria.proxy.EmployeeProxyService;
 import pe.marcolopez.apps.epp.ms.criteria.repository.CriteriaRepository;
 import pe.marcolopez.apps.epp.ms.criteria.service.CriteriaService;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -44,7 +42,8 @@ public class CriteriaServiceImpl implements CriteriaService {
         .orElse(0);
 
     return employeeProxyService
-        .findByCriteria(currentLevel,
+        .findByCriteria(
+            currentLevel,
             expectedYears,
             expectedCertifications,
             expectedProjects,
