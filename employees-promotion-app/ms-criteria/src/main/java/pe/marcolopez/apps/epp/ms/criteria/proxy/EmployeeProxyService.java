@@ -15,11 +15,12 @@ public interface EmployeeProxyService {
   @GetMapping("/employees/{employeeId}")
   EmployeeQueryDTO findById(@PathVariable("employeeId") String id);
 
-  @GetMapping("/employees/criteria")
+  @GetMapping("/employees/eligible-employees")
   List<EmployeeQueryDTO> findByCriteria(@RequestParam("currentLevel") String currentLevel,
                                         @RequestParam("years") Integer years,
                                         @RequestParam("certifications") Integer certifications,
-                                        @RequestParam("projects") Integer projects);
+                                        @RequestParam("projects") Integer projects,
+                                        @RequestParam("periodLevel") Integer periodLevel);
 
   @Slf4j
   @Component
@@ -45,7 +46,8 @@ public interface EmployeeProxyService {
     public List<EmployeeQueryDTO> findByCriteria(String currentLevel,
                                                  Integer years,
                                                  Integer certifications,
-                                                 Integer projects) {
+                                                 Integer projects,
+                                                 Integer periodLevel) {
       return List.of(
           EmployeeQueryDTO
               .builder()

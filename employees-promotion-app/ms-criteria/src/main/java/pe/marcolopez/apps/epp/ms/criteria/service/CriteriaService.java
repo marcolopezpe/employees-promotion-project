@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface CriteriaService {
 
-  List<EmployeeQueryDTO> findEmployeesFromPreviousLevelToNewLevel(String currentLevel);
+  List<EmployeeQueryDTO> findEmployeesFromPreviousLevelToNewLevel(String currentLevel, String newLevel, Integer periodLevel);
 }

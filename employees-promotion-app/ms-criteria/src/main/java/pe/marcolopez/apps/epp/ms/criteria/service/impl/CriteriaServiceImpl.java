@@ -22,17 +22,33 @@ public class CriteriaServiceImpl implements CriteriaService {
   private final CriteriaRepository criteriaRepository;
 
   @Override
-  public List<EmployeeQueryDTO> findEmployeesFromPreviousLevelToNewLevel(String currentLevel) {
-    Map<String, Integer> criteriaMap = criteriaRepository
-        .findAllByLevel(currentLevel)
-        .stream()
-        .collect(Collectors.toMap(CriteriaEntity::getType, CriteriaEntity::getExpectedValue));
+  public List<EmployeeQueryDTO> findEmployeesFromPreviousLevelToNewLevel(String currentLevel, String newLevel, Integer periodLevel) {
+    List<CriteriaEntity> criteriaForNewLevel = criteriaRepository.findAllByLevel(newLevel);
+
+    Integer expectedYears = criteriaForNewLevel.stream()
+        .filter(c -> c.getType().equalsIgnoreCase(CriteriaConstants.YEARS))
+        .findFirst()
+        .map(CriteriaEntity::getExpectedValue)
+        .orElse(0);
+
+    Integer expectedCertifications = criteriaForNewLevel.stream()
+        .filter(c -> c.getType().equalsIgnoreCase(CriteriaConstants.CERTIFICATIONS))
+        .findFirst()
+        .map(CriteriaEntity::getExpectedValue)
+        .orElse(0);
+
+    Integer expectedProjects = criteriaForNewLevel.stream()
+        .filter(c -> c.getType().equalsIgnoreCase(CriteriaConstants.PROJECTS))
+        .findFirst()
+        .map(CriteriaEntity::getExpectedValue)
+        .orElse(0);
 
     return employeeProxyService
         .findByCriteria(currentLevel,
-            criteriaMap.getOrDefault(CriteriaConstants.YEARS, 0),
-            criteriaMap.getOrDefault(CriteriaConstants.CERTIFICATIONS, 0),
-            criteriaMap.getOrDefault(CriteriaConstants.PROJECTS, 0))
+            expectedYears,
+            expectedCertifications,
+            expectedProjects,
+            periodLevel)
         .stream()
         .toList();
   }

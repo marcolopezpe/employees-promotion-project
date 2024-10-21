@@ -9,5 +9,7 @@ import java.util.List;
 public interface CriteriaAPI {
 
   @GetMapping("/eligible-employees")
-  ResponseEntity<List<EmployeeQueryDTO>> findEmployeesFromPreviousLevelToNewLevel(@RequestParam("currentLevel") String currentLevel);
+  ResponseEntity<List<EmployeeQueryDTO>> findEmployeesFromPreviousLevelToNewLevel(@RequestParam("currentLevel") String currentLevel,
+                                                                                  @RequestParam("newLevel") String newLevel,
+                                                                                  @RequestParam("periodLevel") Integer periodLevel);
 }

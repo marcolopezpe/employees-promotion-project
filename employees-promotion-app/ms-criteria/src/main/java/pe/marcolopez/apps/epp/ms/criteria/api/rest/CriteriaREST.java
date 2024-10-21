@@ -17,9 +17,11 @@ public class CriteriaREST implements CriteriaAPI {
   private final CriteriaService criteriaService;
 
   @Override
-  public ResponseEntity<List<EmployeeQueryDTO>> findEmployeesFromPreviousLevelToNewLevel(String currentLevel) {
+  public ResponseEntity<List<EmployeeQueryDTO>> findEmployeesFromPreviousLevelToNewLevel(String currentLevel,
+                                                                                         String newLevel,
+                                                                                         Integer periodLevel) {
     return ResponseEntity.ok(
-        criteriaService.findEmployeesFromPreviousLevelToNewLevel(currentLevel)
+        criteriaService.findEmployeesFromPreviousLevelToNewLevel(currentLevel, newLevel, periodLevel)
     );
   }
 }
