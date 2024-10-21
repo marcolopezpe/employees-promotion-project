@@ -41,7 +41,7 @@ VALUES (
     'LIMA PERU', 
     'MARCOLOPEZPE@OUTLOOK.COM', 
     'JUNIOR',
-    '2028-10-16',
+    '2018-10-16',
     3,
     3,
     CURRENT_TIMESTAMP);
