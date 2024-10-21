@@ -27,6 +27,14 @@ spring:
             connectTimeout: 5000
             readTimeout: 5000
             loggerLevel: basic
+  kafka:
+    topic: ${KAFKA.TOPIC:topic-eligible-employee}
+    bootstrap-servers: ${KAFKA.SERVERS:localhost:19092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+    properties:
+      schema.registry.url: http://localhost:8081
 
 resilience4j:
   circuitbreaker:

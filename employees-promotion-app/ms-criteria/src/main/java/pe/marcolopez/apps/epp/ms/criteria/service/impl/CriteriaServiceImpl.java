@@ -4,8 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import pe.marcolopez.apps.epp.ms.criteria.constants.CriteriaConstants;
+import pe.marcolopez.apps.epp.ms.criteria.dto.EmployeeCommandDTO;
 import pe.marcolopez.apps.epp.ms.criteria.dto.EmployeeQueryDTO;
 import pe.marcolopez.apps.epp.ms.criteria.entity.CriteriaEntity;
+import pe.marcolopez.apps.epp.ms.criteria.kafka.producer.CriteriaEventProducer;
+import pe.marcolopez.apps.epp.ms.criteria.mapper.EmployeeMapper;
 import pe.marcolopez.apps.epp.ms.criteria.proxy.EmployeeProxyService;
 import pe.marcolopez.apps.epp.ms.criteria.repository.CriteriaRepository;
 import pe.marcolopez.apps.epp.ms.criteria.service.CriteriaService;
@@ -18,9 +21,11 @@ public class CriteriaServiceImpl implements CriteriaService {
 
   private final EmployeeProxyService employeeProxyService;
   private final CriteriaRepository criteriaRepository;
+  private final CriteriaEventProducer criteriaEventProducer;
+  private final EmployeeMapper employeeMapper;
 
   @Override
-  public List<EmployeeQueryDTO> findEmployeesFromPreviousLevelToNewLevel(String currentLevel, String newLevel, Integer periodLevel) {
+  public List<EmployeeQueryDTO> findEligibleEmployees(String currentLevel, String newLevel, Integer periodLevel) {
     List<CriteriaEntity> criteriaForNewLevel = criteriaRepository.findAllByLevel(newLevel);
 
     Integer expectedYears = criteriaForNewLevel.stream()
@@ -50,5 +55,12 @@ public class CriteriaServiceImpl implements CriteriaService {
             periodLevel)
         .stream()
         .toList();
+  }
+
+  @Override
+  public void notifyEligibleEmployee(EmployeeCommandDTO employeeCommandDTO) {
+    criteriaEventProducer.sendEvent(
+        employeeMapper.toEvent(employeeCommandDTO)
+    );
   }
 }

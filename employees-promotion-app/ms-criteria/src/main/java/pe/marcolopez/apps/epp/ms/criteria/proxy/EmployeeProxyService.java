@@ -2,7 +2,6 @@ package pe.marcolopez.apps.epp.ms.criteria.proxy;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +22,6 @@ public interface EmployeeProxyService {
                                         @RequestParam("periodLevel") Integer periodLevel);
 
   @Slf4j
-  @Component
   class FallBack implements EmployeeProxyService {
 
     @Override
