@@ -16,6 +16,12 @@ spring:
             - Path=/api/employee/**
           filters:
             - StripPrefix=2
+        - id: ms-criteria
+          uri: lb://ms-criteria
+          predicates:
+            - Path=/api/criteria/**
+          filters:
+            - StripPrefix=2
       globalcors:
         cors-configurations:
           '[/**]':
