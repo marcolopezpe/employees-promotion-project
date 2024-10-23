@@ -25,14 +25,17 @@ public class KafkaConfig {
   @Value("${kafka.schema-registry-url:localhost:8081}")
   private String schemaRegistryUrl;
 
+  @Value("${kafka.auto-offset-reset:latest}")
+  private String autoOffsetReset;
+
   @Bean
   public ConsumerFactory<String, EmployeeEligibleEvent> consumerFactory() {
     Map<String, Object> kafkaProperties = new HashMap<>();
     kafkaProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServers);
+    kafkaProperties.put(AbstractKafkaSchemaSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, schemaRegistryUrl);
+    kafkaProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, autoOffsetReset);
     kafkaProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
     kafkaProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class);
-    kafkaProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-    kafkaProperties.put(AbstractKafkaSchemaSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, schemaRegistryUrl);
     kafkaProperties.put(KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG, true);
     return new DefaultKafkaConsumerFactory<>(kafkaProperties);
   }
