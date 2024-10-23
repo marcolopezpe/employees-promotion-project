@@ -28,6 +28,9 @@ public class KafkaConfig {
   @Value("${kafka.auto-offset-reset:latest}")
   private String autoOffsetReset;
 
+  @Value("${kafka.enable-auto-commit}")
+  private boolean enableAutoCommit;
+
   @Bean
   public ConsumerFactory<String, EmployeeEligibleEvent> consumerFactory() {
     Map<String, Object> kafkaProperties = new HashMap<>();
@@ -37,6 +40,7 @@ public class KafkaConfig {
     kafkaProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
     kafkaProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class);
     kafkaProperties.put(KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG, true);
+    kafkaProperties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, enableAutoCommit);
     return new DefaultKafkaConsumerFactory<>(kafkaProperties);
   }
 

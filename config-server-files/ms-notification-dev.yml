@@ -23,6 +23,7 @@ kafka:
   boostrap-servers: ${KAFKA.SERVERS:localhost:19092}
   schema-registry-url: http://localhost:8081
   auto-offset-reset: earliest
+  enable-auto-commit: false
   consumer:
     group-id: ${KAFKA.CONSUMER.GROUP.ID:ms-notification-group-01}
 
