@@ -1,6 +1,6 @@
 package pe.marcolopez.apps.epp.ms.notification.config;
 
-import io.confluent.kafka.serializers.KafkaAvroSerializer;
+import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,7 +10,6 @@ import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import pe.marcolopez.apps.epp.ms.kafka.event.EmployeeEligibleEvent;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +27,7 @@ public class KafkaConfig {
     Map<String, Object> kafkaProperties = new HashMap<>();
     kafkaProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServers);
     kafkaProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-    kafkaProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class);
+    kafkaProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class);
     kafkaProperties.put("schema.registry.url", schemaRegistryUrl);
     return new DefaultKafkaConsumerFactory<>(kafkaProperties);
   }
