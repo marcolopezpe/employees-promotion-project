@@ -1,6 +1,8 @@
 package pe.marcolopez.apps.epp.ms.notification.config;
 
+import io.confluent.kafka.serializers.AbstractKafkaSchemaSerDeConfig;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
+import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,10 +19,10 @@ import java.util.Map;
 @Configuration
 public class KafkaConfig {
 
-  @Value("${spring.kafka.bootstrap-servers:localhost:19092}")
+  @Value("${kafka.bootstrap-servers:localhost:19092}")
   private String kafkaServers;
 
-  @Value("${spring.kafka.consumer.properties.schema.registry.url:localhost:8081}")
+  @Value("${kafka.schema-registry-url:localhost:8081}")
   private String schemaRegistryUrl;
 
   @Bean
@@ -29,7 +31,9 @@ public class KafkaConfig {
     kafkaProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServers);
     kafkaProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
     kafkaProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class);
-    kafkaProperties.put("schema.registry.url", schemaRegistryUrl);
+    kafkaProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+    kafkaProperties.put(AbstractKafkaSchemaSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, schemaRegistryUrl);
+    kafkaProperties.put(KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG, true);
     return new DefaultKafkaConsumerFactory<>(kafkaProperties);
   }
 

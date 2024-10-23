@@ -1,5 +1,6 @@
 package pe.marcolopez.apps.epp.ms.criteria.config;
 
+import io.confluent.kafka.serializers.AbstractKafkaSchemaSerDeConfig;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -17,10 +18,10 @@ import java.util.Map;
 @Configuration
 public class KafkaConfig {
 
-  @Value("${spring.kafka.bootstrap-servers:localhost:19092}")
+  @Value("${kafka.bootstrap-servers:localhost:19092}")
   private String kafkaServers;
 
-  @Value("${spring.kafka.properties.schema.registry.url:localhost:8081}")
+  @Value("${kafka.schema-registry-url:localhost:8081}")
   private String schemaRegistryUrl;
 
   @Bean
@@ -29,7 +30,7 @@ public class KafkaConfig {
     kafkaProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServers);
     kafkaProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
     kafkaProperties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class);
-    kafkaProperties.put("schema.registry.url", schemaRegistryUrl);
+    kafkaProperties.put(AbstractKafkaSchemaSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, schemaRegistryUrl);
     return new DefaultKafkaProducerFactory<>(kafkaProperties);
   }
 

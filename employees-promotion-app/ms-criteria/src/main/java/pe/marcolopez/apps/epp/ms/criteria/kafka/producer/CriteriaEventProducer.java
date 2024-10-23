@@ -12,7 +12,7 @@ import pe.marcolopez.apps.epp.ms.kafka.event.EmployeeEligibleEvent;
 @RequiredArgsConstructor
 public class CriteriaEventProducer {
 
-  @Value("${spring.kafka.topic:topic-eligible-employee}")
+  @Value("${kafka.topic:topic-eligible-employee}")
   private String topicName;
   private final KafkaTemplate<String, EmployeeEligibleEvent> kafkaTemplate;
 

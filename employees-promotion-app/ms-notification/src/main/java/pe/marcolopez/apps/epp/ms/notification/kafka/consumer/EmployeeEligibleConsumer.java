@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 public class EmployeeEligibleConsumer {
 
   @KafkaListener(
-      topics = "${spring.kafka.topic}",
-      groupId = "${spring.kafka.consumer.group-id}"
+      topics = "${kafka.topic-eligible-employee}",
+      groupId = "${kafka.consumer.group-id}"
   )
   public void consumeEmployeeEligible(ConsumerRecord<String, EmployeeEligibleConsumer> record,
                                       Acknowledgment acknowledgment) {
