@@ -2,6 +2,7 @@ package pe.marcolopez.apps.epp.ms.criteria.service.impl;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pe.marcolopez.apps.epp.ms.criteria.constants.CriteriaConstants;
 import pe.marcolopez.apps.epp.ms.criteria.dto.EmployeeCommandDTO;
@@ -19,6 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 public class CriteriaServiceImpl implements CriteriaService {
 
+  @Qualifier("pe.marcolopez.apps.epp.ms.criteria.proxy.EmployeeProxyService")
   private final EmployeeProxyService employeeProxyService;
   private final CriteriaRepository criteriaRepository;
   private final CriteriaEventProducer criteriaEventProducer;

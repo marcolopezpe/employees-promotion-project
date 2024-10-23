@@ -2,7 +2,7 @@ package pe.marcolopez.apps.epp.ms.criteria.mapper;
 
 import org.mapstruct.Mapper;
 import pe.marcolopez.apps.epp.ms.criteria.dto.EmployeeCommandDTO;
-import pe.marcolopez.apps.epp.ms.criteria.kafka.event.EmployeeEligibleEvent;
+import pe.marcolopez.apps.epp.ms.kafka.event.EmployeeEligibleEvent;
 
 @Mapper(
     componentModel = "spring"

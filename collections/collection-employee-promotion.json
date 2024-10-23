@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "employee-promotion",
     "collectionId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
-    "dateExported": "2024-10-21T03:01:29.298Z",
+    "dateExported": "2024-10-21T07:30:09.868Z",
     "version": "1.2",
     "folders": [
         {
@@ -11,6 +11,20 @@
             "containerId": "",
             "created": "2024-10-16T06:02:05.062Z",
             "sortNum": 10000
+        },
+        {
+            "_id": "78091e23-7714-4e8f-b2b4-ff54e885ad3a",
+            "name": "ms-criteria",
+            "containerId": "",
+            "created": "2024-10-21T04:20:26.293Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "1576df86-c1d9-4410-8e67-9e7dd1dbb07e",
+            "name": "config-server",
+            "containerId": "",
+            "created": "2024-10-21T04:45:05.911Z",
+            "sortNum": 30000
         }
     ],
     "requests": [
@@ -19,13 +33,161 @@
             "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
             "containerId": "1e966b62-a4df-4f4f-a45d-c604f14e7280",
             "name": "http://localhost:8765/api/employee/employees",
-            "url": "http://localhost:8765/api/employee/employees",
+            "url": "http://localhost:8765/api/employee/employees/eligible-employees?currentLevel=JUNIOR&years=5&certifications=3&projects=3&periodLevel=2024",
             "method": "GET",
             "sortNum": 10000,
             "created": "2024-10-20T20:26:21.721Z",
-            "modified": "2024-10-20T20:26:21.721Z",
+            "modified": "2024-10-21T03:55:25.338Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [
+                {
+                    "name": "currentLevel",
+                    "value": "JUNIOR",
+                    "isPath": false
+                },
+                {
+                    "name": "years",
+                    "value": "5",
+                    "isPath": false
+                },
+                {
+                    "name": "certifications",
+                    "value": "3",
+                    "isPath": false
+                },
+                {
+                    "name": "projects",
+                    "value": "3",
+                    "isPath": false
+                },
+                {
+                    "name": "periodLevel",
+                    "value": "2024",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "5e5e05ee-6882-4497-a552-2a5fbb924cec",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "78091e23-7714-4e8f-b2b4-ff54e885ad3a",
+            "name": "Criteria - Eligible Employees",
+            "url": "http://localhost:8765/api/criteria/criteria/eligible-employees?currentLevel=JUNIOR&newLevel=MIDDLE&periodLevel=2024",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-10-21T03:12:16.674Z",
+            "modified": "2024-10-21T07:26:19.164Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [
+                {
+                    "name": "currentLevel",
+                    "value": "JUNIOR",
+                    "isPath": false
+                },
+                {
+                    "name": "newLevel",
+                    "value": "MIDDLE",
+                    "isPath": false
+                },
+                {
+                    "name": "periodLevel",
+                    "value": "2024",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "9dc56215-5bdd-40e2-9189-4406ec85c0bb",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "1e966b62-a4df-4f4f-a45d-c604f14e7280",
+            "name": "http://localhost:8765/api/employee/eligible-employees",
+            "url": "http://localhost:8765/api/employee/employees/eligible-employees?currentLevel=JUNIOR&years=5&certifications=3&projects=3&periodLevel=2024",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-10-21T04:20:30.692Z",
+            "modified": "2024-10-21T04:20:30.692Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [
+                {
+                    "name": "currentLevel",
+                    "value": "JUNIOR",
+                    "isPath": false
+                },
+                {
+                    "name": "years",
+                    "value": "5",
+                    "isPath": false
+                },
+                {
+                    "name": "certifications",
+                    "value": "3",
+                    "isPath": false
+                },
+                {
+                    "name": "projects",
+                    "value": "3",
+                    "isPath": false
+                },
+                {
+                    "name": "periodLevel",
+                    "value": "2024",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "3fab0bd6-6b35-40c1-bf0b-3895382ea14f",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "78091e23-7714-4e8f-b2b4-ff54e885ad3a",
+            "name": "Criteria - Notify Eligible Employee",
+            "url": "http://localhost:8765/api/criteria/criteria/notify-eligible-employee",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-10-21T07:26:37.408Z",
+            "modified": "2024-10-21T07:27:29.825Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": \"85ac773c-e92b-440d-b4e5-cb0882026fde\",\n  \"firstname\": \"MARCO ANTONIO\",\n  \"lastname\": \"LOPEZ CAMACHO\",\n  \"address\": \"LIMA PERU\",\n  \"email\": \"MARCOLOPEZPE@OUTLOOK.COM\",\n  \"currentLevel\": \"JUNIOR\",\n  \"hireDate\": \"2018-10-16\",\n  \"certifications\": 3,\n  \"productionProjects\": 3\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "8576a1f7-f016-4297-85bc-46439c70c2b3",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "1576df86-c1d9-4410-8e67-9e7dd1dbb07e",
+            "name": "api-gateway",
+            "url": "http://localhost:8888/api-gateway/dev",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-10-21T04:45:24.968Z",
+            "modified": "2024-10-21T04:46:03.124Z",
             "headers": []
         }
     ],
-    "ref": "aJi1frGBN9yMNMgjZapvJSjuf_L6B9ClWAG4Q4_Z0w-tX-dd0D7jkRkDivqnnNC60VubnvDBPxD1EQz5yrzUyQ"
+    "ref": "aJi1frGBN9yMNMgjZapvJfzPPlo86tqvmH_wB5FqhtFFSO08DBHHVQMwiUFNQvM4YSFsnuFb-rBMfYe3tzmAVg"
 }

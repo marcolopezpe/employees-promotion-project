@@ -24,7 +24,7 @@ Proceso:
     * 15 años de experiencia
     * 10 proyectos pasados a produccion exitosamente
     * 10 certificaciones oficiales
-5. Luego de la evaluacion interna, con los criterios dinamicos, se obtiene el listado de empleados, con su nivel actual y nuevo nivel propuesto. Solo los empleados que aplican para un nuevo nivel se mostraran.
+5. Luego de la evaluacion a traves del proceso, con los criterios dinamicos, se obtiene el listado de empleados, con su nivel actual y nuevo nivel propuesto. Solo los empleados que aplican para un nuevo nivel se mostraran.
 6. Obteniendo el listado de empleados, se ejecuta la promocion y las notificaciones a los empleados se envian para sabser si desean subir de nivel o desea mantenerse en su actual nivel.
 7. El empleado puede aceptar o rechazar la promocion.
 8. Si el empleado rechaza la promocion, termina para el proceso.

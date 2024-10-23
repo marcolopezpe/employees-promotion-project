@@ -13,7 +13,7 @@
   <artifactId>ms-criteria</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
-  <name>ms-employee</name>
+  <name>ms-criteria</name>
   <description>MS Criteria for Employees Promotion Project</description>
 
   <properties>
@@ -204,7 +204,7 @@
             </goals>
             <configuration>
               <sourceDirectory>${project.basedir}/src/main/resources/avro/</sourceDirectory>
-              <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+              <outputDirectory>${project.basedir}/target/generated-sources/avro</outputDirectory>
               <stringType>String</stringType>
             </configuration>
           </execution>
