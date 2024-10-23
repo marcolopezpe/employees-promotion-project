@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
+import org.springframework.kafka.listener.ContainerProperties;
 import pe.marcolopez.apps.epp.ms.kafka.event.EmployeeEligibleEvent;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,6 +37,7 @@ public class KafkaConfig {
   public ConcurrentKafkaListenerContainerFactory<String, EmployeeEligibleEvent> kafkaListenerContainerFactory() {
     ConcurrentKafkaListenerContainerFactory<String, EmployeeEligibleEvent> factory = new ConcurrentKafkaListenerContainerFactory<>();
     factory.setConsumerFactory(consumerFactory());
+    factory.getContainerProperties().setAckMode(ContainerProperties.AckMode.MANUAL);
     return factory;
   }
 }
