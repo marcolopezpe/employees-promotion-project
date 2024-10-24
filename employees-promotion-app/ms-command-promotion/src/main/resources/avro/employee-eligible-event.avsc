@@ -1,0 +1,52 @@
+{
+  "type": "record",
+  "name": "EmployeeEligibleEvent",
+  "namespace": "pe.marcolopez.apps.epp.ms.kafka.event",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "firstname",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "lastname",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "address",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "email",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "currentLevel",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "hireDate",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "certifications",
+      "type": ["null", "int"],
+      "default": null
+    },
+    {
+      "name": "productionProjects",
+      "type": ["null", "int"],
+      "default": null
+    }
+  ]
+}

@@ -25,10 +25,10 @@ public class KafkaConfig {
   @Value("${kafka.schema-registry-url:localhost:8081}")
   private String schemaRegistryUrl;
 
-  @Value("${kafka.auto-offset-reset:latest}")
+  @Value("${kafka.consumer.auto-offset-reset:latest}")
   private String autoOffsetReset;
 
-  @Value("${kafka.enable-auto-commit}")
+  @Value("${kafka.consumer.enable-auto-commit:true}")
   private boolean enableAutoCommit;
 
   @Bean

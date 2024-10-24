@@ -29,9 +29,10 @@ spring:
             loggerLevel: basic
 
 kafka:
-  topic: ${KAFKA.TOPIC:topic-eligible-employee}
   boostrap-servers: ${KAFKA.SERVERS:localhost:19092}
   schema-registry-url: http://localhost:8081
+  producer:
+    topic: ${KAFKA.TOPIC:topic-eligible-employee}
 
 resilience4j:
   circuitbreaker:

@@ -1,4 +1,4 @@
-package pe.marcolopez.apps.epp.ms.notification.kafka.consumer;
+package pe.marcolopez.apps.epp.ms.command.promotion.kafka.consumer;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,21 +20,18 @@ public class EmployeeEligibleConsumer {
   public void consumeEmployeeEligible(ConsumerRecord<String, EmployeeEligibleEvent> record,
                                       Acknowledgment acknowledgment) {
     String key = record.key();
+    long timestamp = record.timestamp();
     EmployeeEligibleEvent employeeEligibleEvent = record.value();
     try {
       log.info("### Key: {}", key);
-      processEmployeeEligibleEvent(employeeEligibleEvent);
+      processEmployeeEligibleEvent(employeeEligibleEvent, timestamp);
       acknowledgment.acknowledge();
     } catch (Exception e) {
       log.error("Error with key: {}, details: {}", key, e.getMessage());
     }
   }
 
-  private void processEmployeeEligibleEvent(EmployeeEligibleEvent event) {
-    log.info("########################################## Start Email ##########################################");
-    log.info("### To: {}", event.getEmail());
-    log.info("### Subject: Congratulations, {} your have a Promotion!", event.getFirstname());
-    log.info("### Body: Approve?: https://evalutemypromotion.pe/evaluation-promotion/{}", event.getId());
-    log.info("########################################## Finish Email ##########################################");
+  private void processEmployeeEligibleEvent(EmployeeEligibleEvent event, long timestamp) {
+
   }
 }

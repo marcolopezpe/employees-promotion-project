@@ -2,7 +2,6 @@ package pe.marcolopez.apps.epp.ms.command.promotion.mapper;
 
 import org.mapstruct.Mapper;
 import pe.marcolopez.apps.epp.ms.command.promotion.dto.EmployeeQueryDTO;
-import pe.marcolopez.apps.epp.ms.command.promotion.entity.EmployeeEntity;
 
 @Mapper(
         componentModel = "spring"

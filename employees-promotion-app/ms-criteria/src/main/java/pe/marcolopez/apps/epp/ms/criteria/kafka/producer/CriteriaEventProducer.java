@@ -7,16 +7,19 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import pe.marcolopez.apps.epp.ms.kafka.event.EmployeeEligibleEvent;
 
+import java.util.UUID;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class CriteriaEventProducer {
 
-  @Value("${kafka.topic:topic-eligible-employee}")
+  @Value("${kafka.producer.topic:topic-eligible-employee}")
   private String topicName;
   private final KafkaTemplate<String, EmployeeEligibleEvent> kafkaTemplate;
 
   public void sendEvent(EmployeeEligibleEvent event) {
-    kafkaTemplate.send(topicName, event.getId(), event);
+    String key = UUID.randomUUID().toString();
+    kafkaTemplate.send(topicName, key, event);
   }
 }

@@ -30,5 +30,6 @@ public class EmployeeEntity {
     private LocalDate hireDate;
     private Integer certifications;
     private Integer productionProjects;
+    private UUID leaderId;
     private LocalDateTime createdAt;
 }

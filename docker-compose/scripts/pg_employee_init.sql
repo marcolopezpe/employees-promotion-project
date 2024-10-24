@@ -11,6 +11,7 @@ CREATE TABLE tb_employee (
     hire_date           date,
     certifications      int,
     production_projects int,
+    leader_id           uuid,
     created_at          timestamp
 );
 
@@ -25,16 +26,42 @@ CREATE TABLE tb_level_history (
     created_at          timestamp
 );
 
+BEGIN;
+    WITH first_insert AS (
+        INSERT INTO tb_employee (
+            firstname,
+            lastname, 
+            address, 
+            email, 
+            current_level,
+            hire_date,
+            certifications,
+            production_projects,
+            created_at)
+        VALUES (
+            'JOHN', 
+            'DOE', 
+            'USA', 
+            'JOHN.DOE@OUTLOOK.COM', 
+            'MASTER',
+            '2008-11-16',
+            10,
+            10,
+            CURRENT_TIMESTAMP)
+        RETURNING id
+    )
+
 INSERT INTO tb_employee (
-    firstname,
-    lastname, 
-    address, 
-    email, 
-    current_level,
-    hire_date,
-    certifications,
-    production_projects, 
-    created_at)
+        firstname,
+        lastname, 
+        address, 
+        email, 
+        current_level,
+        hire_date,
+        certifications,
+        production_projects,
+        leader_id,
+        created_at)
 VALUES (
     'MARCO ANTONIO', 
     'LOPEZ CAMACHO', 
@@ -44,4 +71,7 @@ VALUES (
     '2018-10-16',
     3,
     3,
+    (SELECT id FROM first_insert),
     CURRENT_TIMESTAMP);
+
+COMMIT;
