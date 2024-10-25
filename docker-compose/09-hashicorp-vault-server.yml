@@ -7,11 +7,12 @@ services:
     restart: unless-stopped  
     environment:
       VAULT_ADDR: "http://127.0.0.1:8200"
-      VAULT_TOKEN: "token-initial-for-root"
+      VAULT_ADDRESS: "http://127.0.0.1:8200"
       VAULT_API_ADDR: "http://127.0.0.1:8200"
     volumes:
       - /Users/marcolopez/Workspace/volumes/ep-net/vault/vault-data:/vault/file/:rw
       - /Users/marcolopez/Workspace/volumes/ep-net/vault/vault-config:/vault/config/:rw
+      - ./scripts/vault-config.hcl:/vault/config/vault-config.hcl:rw
     cap_add:
       - IPC_LOCK
     networks:

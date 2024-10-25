@@ -31,7 +31,8 @@ echo 'Creacion de los topicos de kafka'
 echo '###########################################################'
 
 docker exec -it kafka-broker-1 kafka-topics --bootstrap-server localhost:19092 --if-not-exists --create --topic topic-eligible-employee --partitions 1 --replication-factor 1
-docker exec -it kafka-broker-1 kafka-topics --bootstrap-server localhost:19092 --if-not-exists --create --topic topic-evaluated-employee --partitions 1 --replication-factor 1
+docker exec -it kafka-broker-1 kafka-topics --bootstrap-server localhost:19092 --if-not-exists --create --topic topic-prom-emp-evaluate --partitions 1 --replication-factor 1
+docker exec -it kafka-broker-1 kafka-topics --bootstrap-server localhost:19092 --if-not-exists --create --topic topic-prom-leader-evaluate --partitions 1 --replication-factor 1
 
 #kafka-avro-console-producer --broker-list kafka-broker-1:9092 --topic topic-eligible-employees --property schema.registry.url=http://schema-registry:8081 --property value.schema='{"type":"record","name":"logLineForward","fields":[{"name":"ip","type":"string"}]}'
 
