@@ -1,0 +1,63 @@
+services:
+  discovery-server:
+    image: discovery-server
+    build:
+      context: ./../employees-promotion-app/discovery-server
+      dockerfile: Dockerfile
+    container_name: discovery-server
+    restart: unless-stopped
+    ports:
+      - "8761:8761"
+    environment:
+      - CUSTOM.SERVER.PORT=8761
+      - CUSTOM.EUREKA.INSTANCE=discovery-server
+    networks:
+      - default
+
+  config-server:
+    image: config-server
+    build:
+      context: ./../employees-promotion-app/config-server
+      dockerfile: Dockerfile
+    container_name: config-server
+    restart: unless-stopped
+    ports:
+      - "8888:8888"
+    environment:
+      - CUSTOM.SERVER.PORT=8888
+      - GIT.DEFAULT.LABEL=main
+      - EUREKA.SERVER.HOSTNAME=http://discovery-server:8761/eureka/
+    depends_on:
+      - discovery-server
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8888/actuator/health"]
+      interval: 30s
+      timeout: 20s
+      retries: 10
+    networks:
+      - default
+  
+  monitoring-service:
+    image: monitoring-service
+    build:
+      context: ./../employees-promotion-app/monitoring-service
+      dockerfile: Dockerfile
+    container_name: monitoring-service
+    restart: unless-stopped
+    ports:
+      - "8889:8889"
+    environment:
+      - EUREKA.SERVER.HOSTNAME=http://discovery-server:8761/eureka/
+      - CUSTOM.SERVER.PORT=8889
+      - CONFIG.SERVER.HOSTNAME=http://config-server:8888
+      - CONFIG.SERVER.PROFILE=dev
+    depends_on:
+      config-server:
+        condition: service_healthy
+    networks:
+      - default
+
+networks:
+  default:
+    external: true
+    name: employees-promotion-net
