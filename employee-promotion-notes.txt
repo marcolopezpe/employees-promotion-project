@@ -27,13 +27,13 @@ Proceso:
 5. Luego de la evaluacion a traves del proceso, con los criterios dinamicos, se obtiene el listado de empleados, con su nivel actual y nuevo nivel propuesto. Solo los empleados que aplican para un nuevo nivel se mostraran.
 6. Obteniendo el listado de empleados, se ejecuta la promocion y las notificaciones a los empleados se envian para sabser si desean subir de nivel o desea mantenerse en su actual nivel.
 7. El empleado puede aceptar o rechazar la promocion.
-8. Si el empleado rechaza la promocion, termina para el proceso.
-9. Si el empleado acepta la promocion, se agrega al listado de Promocion Propuesta de Empleados <Periodo>. Donde se le agrega al listado de propuestas para el periodo actual. El periodo esta definido por el año, ya que la promocion es una vez al año.
-10. Luego de la lista de promocion propuesta, se envia a cada lider directo de cada empleado, una notificacion, para su confirmacion de promocion a siguiente nivel.
+8. Si el empleado rechaza la promocion, termina para el proceso, y la Promocion cambia a estado REJECTED.
+9. Si el empleado acepta la promocion, continua el proceso y la Promocion cambia a estado ACCEPTED. El periodo esta definido por el año, ya que la promocion es una vez al año.
+10. Luego que el empleado acepta la propuesta, se notifica a su Lider que tiene una nueva evaluacion que realizar.
 11. El Lider directo puede aprobar, rechazar o solicitar una entrevista con el empleado.
-12. Si el lider aprueba la promocion del empleado, se notifica al empleado, al de rh y al lider directo la promocion, registrandose en su historial de niveles del empleado.
-13. Si el lider rechaza la promocion del empleado, se solicita el motivo y luego de notifica al empleado, a rh y al lider directo, registrando en su historial de niveles del empleado.
-14. Si el lider solicitar entrevista con el empleado, se programa la entrevista para una cierta fecha, hora y lugar. El estado de la promocion del empleado queda en "ENTREVISTA SOLICITADA"
+12. Si el lider aprueba la promocion del empleado, se notifica al empleado, y al lider directo la promocion. Se registra un nuevo nivel en el historial del empleado, y su nivel actual cambia al nuevo. El estado de la promocion cambia a APPROVED.
+13. Si el lider rechaza la promocion del empleado, se solicita el motivo y luego de notifica al empleado, al lider directo. El estado de la promocion cambia a REJCTED.
+14. Si el lider solicita entrevista con el empleado, se programa la entrevista para una cierta fecha, hora y lugar. El estado de la promocion del empleado queda en EVALUATION.
 15. El lider luego de la entrevista, evaluará nuevamente al empleado, donde ahora solo podrá aprobar o rechazar, realizando los puntos 12 o 13.
 16. Luego de la evaluacion del lider, sea directamente (punto 12 y 13) o via entrevista (punto 14 y 15), termina el proceso.
 17. El lider tambien puede visualizar el listado de promociones que tiene que realizar.

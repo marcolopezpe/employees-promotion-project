@@ -6,12 +6,20 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Service;
+import pe.marcolopez.apps.epp.ms.command.promotion.entity.PromotionEntity;
+import pe.marcolopez.apps.epp.ms.command.promotion.repository.PromotionRepository;
+import pe.marcolopez.apps.epp.ms.command.promotion.util.ConvertUtil;
 import pe.marcolopez.apps.epp.ms.kafka.event.EmployeeEligibleEvent;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Slf4j
 @Service
 @AllArgsConstructor
 public class EmployeeEligibleConsumer {
+
+  private final PromotionRepository promotionRepository;
 
   @KafkaListener(
       topics = "${kafka.consumer.topic-eligible-employee}",
@@ -32,6 +40,17 @@ public class EmployeeEligibleConsumer {
   }
 
   private void processEmployeeEligibleEvent(EmployeeEligibleEvent event, long timestamp) {
-
+    promotionRepository.save(
+        PromotionEntity
+            .builder()
+            .employeeId(UUID.fromString(event.getId()))
+            .proposedLevel(ConvertUtil.proposedLevel(event.getCurrentLevel()))
+            .status(PromotionStatus.PROMOTION.name())
+            .requestDate(ConvertUtil.convertToLocalDate(timestamp))
+            .leaderId(UUID.fromString(event.getLeaderId()))
+            .period(event.getPeriodLevel())
+            .createdAt(LocalDateTime.now())
+            .build()
+    );
   }
 }

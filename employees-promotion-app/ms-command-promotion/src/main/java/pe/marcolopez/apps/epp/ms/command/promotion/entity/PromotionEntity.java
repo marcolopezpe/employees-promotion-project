@@ -30,7 +30,7 @@ public class PromotionEntity {
   private LocalDate requestDate;
   private LocalDate decisionDate;
   private UUID leaderId;
-  private String comments;
+  private String leaderComments;
   private Integer period;
-  private LocalDateTime createdAt;
+  private LocalDateTime createdAt = LocalDateTime.now();
 }

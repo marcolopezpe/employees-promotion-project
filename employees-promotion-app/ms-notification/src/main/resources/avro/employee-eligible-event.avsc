@@ -47,6 +47,16 @@
       "name": "productionProjects",
       "type": ["null", "int"],
       "default": null
+    },
+    {
+      "name": "periodLevel",
+      "type": ["null", "int"],
+      "default": null
+    },
+    {
+      "name": "leaderId",
+      "type": ["null", "string"],
+      "default": null
     }
   ]
 }

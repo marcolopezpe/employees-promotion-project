@@ -12,7 +12,9 @@ public record EmployeeCommandDTO(UUID id,
                                  String address,
                                  String email,
                                  String currentLevel,
+                                 Integer periodLevel,
                                  LocalDate hireDate,
                                  Integer certifications,
-                                 Integer productionProjects) {
+                                 Integer productionProjects,
+                                 UUID leaderId) {
 }

@@ -14,5 +14,6 @@ public record EmployeeQueryDTO (UUID id,
                                 LocalDate hireDate,
                                 Integer certifications,
                                 Integer productionProjects,
-                                Integer periodLevel) {
+                                Integer periodLevel,
+                                UUID leaderId) {
 }

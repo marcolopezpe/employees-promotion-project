@@ -18,4 +18,13 @@ public class ConvertUtil {
     public static Long convertToLong(LocalDate localDate) {
         return localDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli();
     }
+
+    public static String proposedLevel(String currentLevel) {
+        return switch (currentLevel) {
+            case "JUNIOR" -> "MIDDLE";
+            case "MIDDLE" -> "SENIOR";
+            case "SENIOR" -> "MASTER";
+            default -> "";
+        };
+    }
 }
