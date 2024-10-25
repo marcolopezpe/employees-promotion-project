@@ -65,7 +65,7 @@ services:
     container_name: api-gateway
     restart: unless-stopped
     ports:
-      - "8889:8889"
+      - "8765:8765"
     environment:
       - EUREKA.SERVER.HOSTNAME=http://discovery-server:8761/eureka/
       - CUSTOM.SERVER.PORT=8765
