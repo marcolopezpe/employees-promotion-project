@@ -32,7 +32,8 @@ kafka:
   boostrap-servers: ${KAFKA.SERVERS:localhost:19092}
   schema-registry-url: http://localhost:8081
   producer:
-    topic: ${KAFKA.PRODUCER.TOPIC:topic-evaluted-employee}
+    topic-prom-emp-evaluate: ${KAFKA.PRODUCER.TOPIC.PROM.EMP.EVALUATE:topic-prom-emp-evaluate}
+    topic-prom-leader-evaluate: ${KAFKA.PRODUCER.TOPIC.PROM.LEADER.EVALUATE:topic-prom-leader-evaluate}
   consumer:
     topic-eligible-employee: ${KAFKA.CONSUMER.TOPIC:topic-eligible-employee}
     group-id: ${KAFKA.CONSUMER.GROUP.ID:ms-notification-group-02}

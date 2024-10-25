@@ -8,11 +8,14 @@ import pe.marcolopez.apps.epp.ms.command.promotion.dto.PromotionEvaluateEmployee
 import pe.marcolopez.apps.epp.ms.command.promotion.dto.PromotionEvaluateLeaderDTO;
 import pe.marcolopez.apps.epp.ms.command.promotion.dto.PromotionQueryDTO;
 import pe.marcolopez.apps.epp.ms.command.promotion.entity.PromotionEntity;
+import pe.marcolopez.apps.epp.ms.kafka.event.PromotionEmployeeEvent;
 
 @Mapper(componentModel = "spring")
 public interface PromotionMapper {
 
   PromotionQueryDTO toQueryDTO(PromotionEntity promotionEntity);
+
+  PromotionEmployeeEvent toEvent(PromotionQueryDTO promotionQueryDTO);
 
   @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
   void updateFromDTO(PromotionEvaluateEmployeeDTO promotionEvaluateEmployeeDTO,

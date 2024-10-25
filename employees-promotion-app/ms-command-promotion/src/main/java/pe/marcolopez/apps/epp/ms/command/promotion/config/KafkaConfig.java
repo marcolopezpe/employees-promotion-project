@@ -3,17 +3,22 @@ package pe.marcolopez.apps.epp.ms.command.promotion.config;
 import io.confluent.kafka.serializers.AbstractKafkaSchemaSerDeConfig;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
+import io.confluent.kafka.serializers.KafkaAvroSerializer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
+import org.springframework.kafka.core.DefaultKafkaProducerFactory;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.listener.ContainerProperties;
 import pe.marcolopez.apps.epp.ms.kafka.event.EmployeeEligibleEvent;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,6 +38,16 @@ public class KafkaConfig {
   private boolean enableAutoCommit;
 
   @Bean
+  public ProducerFactory<String, EmployeeEligibleEvent> producerFactory() {
+    Map<String, Object> kafkaProperties = new HashMap<>();
+    kafkaProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServers);
+    kafkaProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+    kafkaProperties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class);
+    kafkaProperties.put(AbstractKafkaSchemaSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, schemaRegistryUrl);
+    return new DefaultKafkaProducerFactory<>(kafkaProperties);
+  }
+
+  @Bean
   public ConsumerFactory<String, EmployeeEligibleEvent> consumerFactory() {
     Map<String, Object> kafkaProperties = new HashMap<>();
     kafkaProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServers);
@@ -43,6 +58,11 @@ public class KafkaConfig {
     kafkaProperties.put(KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG, true);
     kafkaProperties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, enableAutoCommit);
     return new DefaultKafkaConsumerFactory<>(kafkaProperties);
+  }
+
+  @Bean
+  public KafkaTemplate<String, EmployeeEligibleEvent> kafkaTemplate() {
+    return new KafkaTemplate<>(producerFactory());
   }
 
   @Bean

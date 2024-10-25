@@ -21,6 +21,6 @@ public class CriteriaEventProducer {
   public void sendEvent(EmployeeEligibleEvent event) {
     String key = UUID.randomUUID().toString();
     kafkaTemplate.send(topicName, key, event);
-    log.info("### CriteriaEventProducer>sendEvent: {}", event);
+    log.info("### Sent CriteriaEventProducer>sendEvent: {}", event);
   }
 }

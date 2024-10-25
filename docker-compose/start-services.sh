@@ -5,8 +5,6 @@ echo '###########################################################'
 echo 'Creacion del stack de microservicios'
 echo '###########################################################'
 
-docker login
-
 docker compose -f 41-microservices.yml \
 				build
 
