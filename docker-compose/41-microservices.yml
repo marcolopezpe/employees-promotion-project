@@ -57,6 +57,26 @@ services:
     networks:
       - default
 
+  api-gateway:
+    image: api-gateway
+    build:
+      context: ./../employees-promotion-app/api-gateway
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    restart: unless-stopped
+    ports:
+      - "8889:8889"
+    environment:
+      - EUREKA.SERVER.HOSTNAME=http://discovery-server:8761/eureka/
+      - CUSTOM.SERVER.PORT=8765
+      - CONFIG.SERVER.HOSTNAME=http://config-server:8888
+      - CONFIG.SERVER.PROFILE=dev
+    depends_on:
+      config-server:
+        condition: service_healthy
+    networks:
+      - default
+
 networks:
   default:
     external: true

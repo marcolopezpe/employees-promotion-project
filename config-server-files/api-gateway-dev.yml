@@ -36,6 +36,11 @@ logging:
   file:
     name: ${LOG.FILE.PATH:./logs}/${LOG.FILE.NAME:api-gateway.log}
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA.SERVER.HOSTNAME:http://localhost:8761/eureka/}
+
 management:
   zipkin:
     tracing:
