@@ -22,6 +22,12 @@ spring:
             - Path=/api/criteria/**
           filters:
             - StripPrefix=2
+        - id: ms-command-promotion
+          uri: lb://ms-command-promotion
+          predicates:
+            - Path=/api/promotion/**
+          filters:
+            - StripPrefix=2
       globalcors:
         cors-configurations:
           '[/**]':

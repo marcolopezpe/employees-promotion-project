@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import pe.marcolopez.apps.epp.ms.command.promotion.entity.PromotionEntity;
 import pe.marcolopez.apps.epp.ms.command.promotion.repository.PromotionRepository;
 import pe.marcolopez.apps.epp.ms.command.promotion.util.ConvertUtil;
+import pe.marcolopez.apps.epp.ms.command.promotion.util.PromotionUtil;
 import pe.marcolopez.apps.epp.ms.kafka.event.EmployeeEligibleEvent;
 
 import java.time.LocalDateTime;
@@ -45,7 +46,7 @@ public class EmployeeEligibleConsumer {
             .builder()
             .employeeId(UUID.fromString(event.getId()))
             .proposedLevel(ConvertUtil.proposedLevel(event.getCurrentLevel()))
-            .status(PromotionStatus.PROMOTION.name())
+            .status(PromotionUtil.PROMOTION)
             .requestDate(ConvertUtil.convertToLocalDate(timestamp))
             .leaderId(UUID.fromString(event.getLeaderId()))
             .period(event.getPeriodLevel())
