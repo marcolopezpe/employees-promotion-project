@@ -19,6 +19,8 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.listener.ContainerProperties;
 import pe.marcolopez.apps.epp.ms.kafka.event.EmployeeEligibleEvent;
+import pe.marcolopez.apps.epp.ms.kafka.event.PromotionEmployeeEvent;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,7 +40,7 @@ public class KafkaConfig {
   private boolean enableAutoCommit;
 
   @Bean
-  public ProducerFactory<String, EmployeeEligibleEvent> producerFactory() {
+  public ProducerFactory<String, PromotionEmployeeEvent> producerFactory() {
     Map<String, Object> kafkaProperties = new HashMap<>();
     kafkaProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServers);
     kafkaProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -61,7 +63,7 @@ public class KafkaConfig {
   }
 
   @Bean
-  public KafkaTemplate<String, EmployeeEligibleEvent> kafkaTemplate() {
+  public KafkaTemplate<String, PromotionEmployeeEvent> kafkaTemplate() {
     return new KafkaTemplate<>(producerFactory());
   }
 

@@ -2,7 +2,6 @@ package pe.marcolopez.apps.epp.ms.command.promotion.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.actuate.web.mappings.MappingsEndpoint;
 import org.springframework.stereotype.Service;
 import pe.marcolopez.apps.epp.ms.command.promotion.dto.PromotionEvaluateEmployeeDTO;
 import pe.marcolopez.apps.epp.ms.command.promotion.dto.PromotionEvaluateLeaderDTO;
@@ -11,7 +10,6 @@ import pe.marcolopez.apps.epp.ms.command.promotion.kafka.producer.PromotionEvent
 import pe.marcolopez.apps.epp.ms.command.promotion.mapper.PromotionMapper;
 import pe.marcolopez.apps.epp.ms.command.promotion.repository.PromotionRepository;
 import pe.marcolopez.apps.epp.ms.command.promotion.service.PromotionService;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -23,7 +21,6 @@ public class PromotionServiceImpl implements PromotionService {
   private final PromotionRepository promotionRepository;
   private final PromotionMapper promotionMapper;
   private final PromotionEventProducer promotionEventProducer;
-  private final MappingsEndpoint mappingsEndpoint;
 
   @Override
   public List<PromotionQueryDTO> findAllByLeaderIdAndStatus(UUID leaderId, String status) {

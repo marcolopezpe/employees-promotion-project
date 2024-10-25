@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import pe.marcolopez.apps.epp.ms.kafka.event.EmployeeEligibleEvent;
-
 import java.util.UUID;
 
 @Slf4j
