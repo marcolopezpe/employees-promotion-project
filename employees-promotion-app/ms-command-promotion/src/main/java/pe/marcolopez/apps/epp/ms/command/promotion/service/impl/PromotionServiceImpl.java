@@ -41,6 +41,15 @@ public class PromotionServiceImpl implements PromotionService {
   }
 
   @Override
+  public List<PromotionQueryDTO> findByEmployeeId(UUID employeeId) {
+    return promotionRepository
+        .findByEmployeeId(employeeId)
+        .stream()
+        .map(promotionMapper::toQueryDTO)
+        .toList();
+  }
+
+  @Override
   public PromotionQueryDTO evaluateByEmployee(PromotionEvaluateEmployeeDTO promotionEvaluateEmployeeDTO) {
     return promotionRepository
         .findById(promotionEvaluateEmployeeDTO.promotionId())
@@ -52,7 +61,7 @@ public class PromotionServiceImpl implements PromotionService {
         })
         .map(promotionQueryDTO -> {
           promotionEventProducer.sendPromotionEmployeeEvaluate(
-              promotionMapper.toEvent(promotionQueryDTO)
+              promotionMapper.toEventEmployee(promotionQueryDTO)
           );
           return promotionQueryDTO;
         })
@@ -68,6 +77,13 @@ public class PromotionServiceImpl implements PromotionService {
           return promotionMapper.toQueryDTO(
               promotionRepository.save(promotionEntity)
           );
+        })
+        .map(promotionQueryDTO -> {
+
+          promotionEventProducer.sendPromotionLeaderEvaluate(
+              promotionMapper.toEventLeader(promotionQueryDTO)
+          );
+          return promotionQueryDTO;
         })
         .orElse(null);
   }

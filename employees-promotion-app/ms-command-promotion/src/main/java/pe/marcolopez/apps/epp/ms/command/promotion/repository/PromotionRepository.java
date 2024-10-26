@@ -10,4 +10,6 @@ public interface PromotionRepository extends JpaRepository<PromotionEntity, UUID
   List<PromotionEntity> findAllByLeaderIdAndStatus(UUID leaderId, String status);
 
   List<PromotionEntity> findAllByLeaderId(UUID leaderId);
+
+  List<PromotionEntity> findByEmployeeId(UUID employeeId);
 }

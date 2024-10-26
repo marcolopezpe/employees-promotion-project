@@ -21,6 +21,9 @@ public interface PromotionAPI {
   ResponseEntity<List<PromotionQueryDTO>> findAllByLeaderIdAndStatus(@PathVariable("leaderId") String leaderId,
                                                                      @PathVariable("status") String status);
 
+  @GetMapping("/employee/{employeeId}")
+  ResponseEntity<List<PromotionQueryDTO>> findByEmployeeId(@PathVariable("employeeId") String employeeId);
+
   @PutMapping("/evaluate/employee")
   ResponseEntity<?> evaluateEmployee(@RequestBody PromotionEvaluateEmployeeDTO promotionEvaluateEmployeeDTO);
 

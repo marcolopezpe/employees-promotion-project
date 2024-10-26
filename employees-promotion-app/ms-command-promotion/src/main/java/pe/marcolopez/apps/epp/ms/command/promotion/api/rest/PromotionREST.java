@@ -37,6 +37,13 @@ public class PromotionREST implements PromotionAPI {
   }
 
   @Override
+  public ResponseEntity<List<PromotionQueryDTO>> findByEmployeeId(String employeeId) {
+    return ResponseEntity.ok(
+        promotionService.findByEmployeeId(UUID.fromString(employeeId))
+    );
+  }
+
+  @Override
   public ResponseEntity<?> evaluateEmployee(PromotionEvaluateEmployeeDTO promotionEvaluateEmployeeDTO) {
     return ResponseEntity.ok(
         promotionService.evaluateByEmployee(promotionEvaluateEmployeeDTO)

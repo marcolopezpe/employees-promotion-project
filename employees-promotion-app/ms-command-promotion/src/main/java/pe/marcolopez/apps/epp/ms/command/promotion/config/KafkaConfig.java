@@ -20,6 +20,7 @@ import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.listener.ContainerProperties;
 import pe.marcolopez.apps.epp.ms.kafka.event.EmployeeEligibleEvent;
 import pe.marcolopez.apps.epp.ms.kafka.event.PromotionEmployeeEvent;
+import pe.marcolopez.apps.epp.ms.kafka.event.PromotionLeaderEvent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,8 +40,18 @@ public class KafkaConfig {
   @Value("${kafka.consumer.enable-auto-commit:true}")
   private boolean enableAutoCommit;
 
-  @Bean
-  public ProducerFactory<String, PromotionEmployeeEvent> producerFactory() {
+  @Bean("producerFactoryEmployee")
+  public ProducerFactory<String, PromotionEmployeeEvent> producerFactoryEmployee() {
+    Map<String, Object> kafkaProperties = new HashMap<>();
+    kafkaProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServers);
+    kafkaProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+    kafkaProperties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class);
+    kafkaProperties.put(AbstractKafkaSchemaSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, schemaRegistryUrl);
+    return new DefaultKafkaProducerFactory<>(kafkaProperties);
+  }
+
+  @Bean("producerFactoryLeader")
+  public ProducerFactory<String, PromotionLeaderEvent> producerFactoryLeader() {
     Map<String, Object> kafkaProperties = new HashMap<>();
     kafkaProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServers);
     kafkaProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -62,9 +73,14 @@ public class KafkaConfig {
     return new DefaultKafkaConsumerFactory<>(kafkaProperties);
   }
 
-  @Bean
-  public KafkaTemplate<String, PromotionEmployeeEvent> kafkaTemplate() {
-    return new KafkaTemplate<>(producerFactory());
+  @Bean("kafkaTemplateEmployee")
+  public KafkaTemplate<String, PromotionEmployeeEvent> kafkaTemplateEmployee() {
+    return new KafkaTemplate<>(producerFactoryEmployee());
+  }
+
+  @Bean("kafkaTemplateLeader")
+  public KafkaTemplate<String, PromotionLeaderEvent> kafkaTemplateLeader() {
+    return new KafkaTemplate<>(producerFactoryLeader());
   }
 
   @Bean

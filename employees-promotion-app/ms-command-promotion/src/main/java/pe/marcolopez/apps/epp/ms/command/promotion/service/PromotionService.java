@@ -12,6 +12,8 @@ public interface PromotionService {
 
   List<PromotionQueryDTO> findAllByLeaderId(UUID leaderId);
 
+  List<PromotionQueryDTO> findByEmployeeId(UUID employeeId);
+
   PromotionQueryDTO evaluateByEmployee(PromotionEvaluateEmployeeDTO promotionEvaluateEmployeeDTO);
 
   PromotionQueryDTO evaluateByLeader(PromotionEvaluateLeaderDTO promotionEvaluateLeaderDTO);

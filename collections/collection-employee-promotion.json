@@ -2,9 +2,23 @@
     "clientName": "Thunder Client",
     "collectionName": "employee-promotion",
     "collectionId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
-    "dateExported": "2024-10-21T07:30:09.868Z",
+    "dateExported": "2024-10-26T01:54:17.852Z",
     "version": "1.2",
     "folders": [
+        {
+            "_id": "21a78658-50fc-4f02-8642-e1f2f1d403d0",
+            "name": "api-gateway",
+            "containerId": "",
+            "created": "2024-10-25T08:55:26.083Z",
+            "sortNum": 2500
+        },
+        {
+            "_id": "1576df86-c1d9-4410-8e67-9e7dd1dbb07e",
+            "name": "config-server",
+            "containerId": "",
+            "created": "2024-10-21T04:45:05.911Z",
+            "sortNum": 5000
+        },
         {
             "_id": "1e966b62-a4df-4f4f-a45d-c604f14e7280",
             "name": "ms-employee",
@@ -20,11 +34,11 @@
             "sortNum": 20000
         },
         {
-            "_id": "1576df86-c1d9-4410-8e67-9e7dd1dbb07e",
-            "name": "config-server",
+            "_id": "b6a4e711-5276-4434-9a54-d14ef1edfad6",
+            "name": "ms-command-promotion",
             "containerId": "",
-            "created": "2024-10-21T04:45:05.911Z",
-            "sortNum": 30000
+            "created": "2024-10-25T04:22:00.312Z",
+            "sortNum": 40000
         }
     ],
     "requests": [
@@ -32,7 +46,7 @@
             "_id": "faa70998-fba8-40ae-9fc0-3b10fa5302fb",
             "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
             "containerId": "1e966b62-a4df-4f4f-a45d-c604f14e7280",
-            "name": "http://localhost:8765/api/employee/employees",
+            "name": "Eligibles Employees By Filters",
             "url": "http://localhost:8765/api/employee/employees/eligible-employees?currentLevel=JUNIOR&years=5&certifications=3&projects=3&periodLevel=2024",
             "method": "GET",
             "sortNum": 10000,
@@ -77,12 +91,12 @@
             "_id": "5e5e05ee-6882-4497-a552-2a5fbb924cec",
             "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
             "containerId": "78091e23-7714-4e8f-b2b4-ff54e885ad3a",
-            "name": "Criteria - Eligible Employees",
+            "name": "Eligible Employees By Levels and Period",
             "url": "http://localhost:8765/api/criteria/criteria/eligible-employees?currentLevel=JUNIOR&newLevel=MIDDLE&periodLevel=2024",
             "method": "GET",
             "sortNum": 10000,
             "created": "2024-10-21T03:12:16.674Z",
-            "modified": "2024-10-21T07:26:19.164Z",
+            "modified": "2024-10-23T01:16:19.424Z",
             "headers": [
                 {
                     "name": "User-Agent",
@@ -109,51 +123,6 @@
             ]
         },
         {
-            "_id": "9dc56215-5bdd-40e2-9189-4406ec85c0bb",
-            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
-            "containerId": "1e966b62-a4df-4f4f-a45d-c604f14e7280",
-            "name": "http://localhost:8765/api/employee/eligible-employees",
-            "url": "http://localhost:8765/api/employee/employees/eligible-employees?currentLevel=JUNIOR&years=5&certifications=3&projects=3&periodLevel=2024",
-            "method": "GET",
-            "sortNum": 20000,
-            "created": "2024-10-21T04:20:30.692Z",
-            "modified": "2024-10-21T04:20:30.692Z",
-            "headers": [
-                {
-                    "name": "User-Agent",
-                    "value": "Thunder Client (https://www.thunderclient.com)",
-                    "isDisabled": true
-                }
-            ],
-            "params": [
-                {
-                    "name": "currentLevel",
-                    "value": "JUNIOR",
-                    "isPath": false
-                },
-                {
-                    "name": "years",
-                    "value": "5",
-                    "isPath": false
-                },
-                {
-                    "name": "certifications",
-                    "value": "3",
-                    "isPath": false
-                },
-                {
-                    "name": "projects",
-                    "value": "3",
-                    "isPath": false
-                },
-                {
-                    "name": "periodLevel",
-                    "value": "2024",
-                    "isPath": false
-                }
-            ]
-        },
-        {
             "_id": "3fab0bd6-6b35-40c1-bf0b-3895382ea14f",
             "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
             "containerId": "78091e23-7714-4e8f-b2b4-ff54e885ad3a",
@@ -162,7 +131,7 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2024-10-21T07:26:37.408Z",
-            "modified": "2024-10-21T07:27:29.825Z",
+            "modified": "2024-10-25T09:45:10.188Z",
             "headers": [
                 {
                     "name": "User-Agent",
@@ -172,7 +141,7 @@
             ],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"id\": \"85ac773c-e92b-440d-b4e5-cb0882026fde\",\n  \"firstname\": \"MARCO ANTONIO\",\n  \"lastname\": \"LOPEZ CAMACHO\",\n  \"address\": \"LIMA PERU\",\n  \"email\": \"MARCOLOPEZPE@OUTLOOK.COM\",\n  \"currentLevel\": \"JUNIOR\",\n  \"hireDate\": \"2018-10-16\",\n  \"certifications\": 3,\n  \"productionProjects\": 3\n}",
+                "raw": "{\n  \"id\": \"06499dc8-8644-445c-a3ba-73ef12f2ac20\",\n  \"firstname\": \"MARCO ANTONIO\",\n  \"lastname\": \"LOPEZ CAMACHO\",\n  \"address\": \"LIMA PERU\",\n  \"email\": \"MARCOLOPEZPE@OUTLOOK.COM\",\n  \"currentLevel\": \"JUNIOR\",\n  \"hireDate\": \"2018-10-16\",\n  \"certifications\": 3,\n  \"productionProjects\": 3,\n  \"leaderId\": \"382e01e3-0bf2-46c2-827c-e9876a376c09\",\n  \"periodLevel\": 2024\n}",
                 "form": []
             }
         },
@@ -180,14 +149,96 @@
             "_id": "8576a1f7-f016-4297-85bc-46439c70c2b3",
             "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
             "containerId": "1576df86-c1d9-4410-8e67-9e7dd1dbb07e",
-            "name": "api-gateway",
-            "url": "http://localhost:8888/api-gateway/dev",
+            "name": "Check Config Properties",
+            "url": "http://localhost:8888/monitoring-service/dev",
             "method": "GET",
             "sortNum": 30000,
             "created": "2024-10-21T04:45:24.968Z",
-            "modified": "2024-10-21T04:46:03.124Z",
+            "modified": "2024-10-25T06:46:55.554Z",
             "headers": []
+        },
+        {
+            "_id": "e99152b7-13ec-40f9-9cc4-36091f19590e",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "b6a4e711-5276-4434-9a54-d14ef1edfad6",
+            "name": "Promotions By Lead And Status",
+            "url": "http://localhost:8765/api/promotion/promotions/leader/382e01e3-0bf2-46c2-827c-e9876a376c09/status/PROMOTION",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-10-25T04:23:45.956Z",
+            "modified": "2024-10-25T09:51:24.778Z",
+            "headers": []
+        },
+        {
+            "_id": "12b40c7f-96e7-4a7f-9b52-448973959e77",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "b6a4e711-5276-4434-9a54-d14ef1edfad6",
+            "name": "Promotions By Lead",
+            "url": "http://localhost:8765/api/promotion/promotions/leader/382e01e3-0bf2-46c2-827c-e9876a376c09",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-10-25T04:23:55.363Z",
+            "modified": "2024-10-25T09:45:46.234Z",
+            "headers": []
+        },
+        {
+            "_id": "f305af3c-1f13-4d8e-8bf5-5ad348c1c085",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "1576df86-c1d9-4410-8e67-9e7dd1dbb07e",
+            "name": "Check Actuator Health",
+            "url": "http://localhost:8888/actuator/health",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-10-25T07:06:48.533Z",
+            "modified": "2024-10-25T07:06:59.340Z",
+            "headers": []
+        },
+        {
+            "_id": "7fbe626c-eb3d-4ff1-88bc-967950ab2e04",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "21a78658-50fc-4f02-8642-e1f2f1d403d0",
+            "name": "Refresh Actuator",
+            "url": "http://localhost:8765/actuator/refresh",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-10-25T08:55:54.794Z",
+            "modified": "2024-10-25T09:08:54.237Z",
+            "headers": []
+        },
+        {
+            "_id": "c73ad4e2-40c5-4617-becd-ba6d53fbf23a",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "b6a4e711-5276-4434-9a54-d14ef1edfad6",
+            "name": "Evaluation By Employee - ACCEPTED",
+            "url": "http://localhost:8765/api/promotion/promotions/evaluate/employee",
+            "method": "PUT",
+            "sortNum": 90000,
+            "created": "2024-10-25T10:14:16.967Z",
+            "modified": "2024-10-25T10:20:39.181Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"promotionId\": \"1e70f96f-7f3a-4fa3-aaaf-2ffb287e0011\",\n  \"employeeId\": \"06499dc8-8644-445c-a3ba-73ef12f2ac20\",\n  \"status\": \"ACCEPTED\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "b1a35ece-a746-4829-a403-ddcbc442ce89",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "b6a4e711-5276-4434-9a54-d14ef1edfad6",
+            "name": "Evaluation By Employee - DECLINED",
+            "url": "http://localhost:8765/api/promotion/promotions/evaluate/employee",
+            "method": "PUT",
+            "sortNum": 100000,
+            "created": "2024-10-25T10:17:35.088Z",
+            "modified": "2024-10-25T10:21:51.958Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"promotionId\": \"1e70f96f-7f3a-4fa3-aaaf-2ffb287e0011\",\n  \"employeeId\": \"06499dc8-8644-445c-a3ba-73ef12f2ac20\",\n  \"status\": \"DECLINED\"\n}",
+                "form": []
+            }
         }
     ],
-    "ref": "aJi1frGBN9yMNMgjZapvJfzPPlo86tqvmH_wB5FqhtFFSO08DBHHVQMwiUFNQvM4YSFsnuFb-rBMfYe3tzmAVg"
+    "ref": "aJi1frGBN9yMNMgjZapvJZIz9v1SO8xswI3lM3yJcRhEHr-qtBweCKrn27r8KfukPy6QG1Do-r0EA4LRId-gzQ"
 }
