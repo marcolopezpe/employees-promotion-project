@@ -2,6 +2,7 @@ package pe.marcolopez.apps.epp.ms.command.promotion.mapper;
 
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import pe.marcolopez.apps.epp.ms.command.promotion.dto.PromotionEvaluateEmployeeDTO;
@@ -25,6 +26,7 @@ public interface PromotionMapper {
                      @MappingTarget PromotionEntity promotionEntity);
 
   @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+  @Mapping(source = "comments", target = "leaderComments")
   void updateFromDTO(PromotionEvaluateLeaderDTO promotionEvaluateLeaderDTO,
                      @MappingTarget PromotionEntity promotionEntity);
 }

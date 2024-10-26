@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pe.marcolopez.apps.epp.ms.notification.api.EmployeeAPI;
-import pe.marcolopez.apps.epp.ms.notification.dto.EmployeeCommandDTO;
 import pe.marcolopez.apps.epp.ms.notification.dto.EmployeeQueryDTO;
 import pe.marcolopez.apps.epp.ms.notification.service.EmployeeService;
 
@@ -45,9 +44,9 @@ public class EmployeeREST implements EmployeeAPI {
   }
 
   @Override
-  public ResponseEntity<Integer> updateLevel(EmployeeCommandDTO employeeCommandDTO) {
+  public ResponseEntity<Integer> updateLevel(String id, String level) {
     return ResponseEntity.ok(
-        employeeService.updateLevel(employeeCommandDTO.id(), employeeCommandDTO.level())
+        employeeService.updateLevel(UUID.fromString(id), level)
     );
   }
 }

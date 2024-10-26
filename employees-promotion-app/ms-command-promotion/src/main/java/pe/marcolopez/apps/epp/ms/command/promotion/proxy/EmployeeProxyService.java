@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import pe.marcolopez.apps.epp.ms.command.promotion.dto.EmployeeCommandLevelDTO;
 import pe.marcolopez.apps.epp.ms.command.promotion.dto.EmployeeQueryDTO;
 import pe.marcolopez.apps.epp.ms.command.promotion.dto.LevelHistoryCommandDTO;
 import pe.marcolopez.apps.epp.ms.command.promotion.dto.LevelHistoryQueryDTO;
@@ -19,8 +18,9 @@ public interface EmployeeProxyService {
   @GetMapping("/employees/{employeeId}")
   EmployeeQueryDTO findById(@PathVariable("employeeId") String id);
 
-  @PutMapping("/employees/level/{id}")
-  Integer updateLevel(@RequestBody EmployeeCommandLevelDTO employeeCommandDTO);
+  @PutMapping("/employees/{employeeId}/level/{level}")
+  Integer updateLevel(@PathVariable("employeeId") String employeeId,
+                      @PathVariable("level") String level);
 
   @PostMapping("/level-histories/employee")
   LevelHistoryQueryDTO add(@RequestBody LevelHistoryCommandDTO levelHistoryCommandDTO);
@@ -46,7 +46,7 @@ public interface EmployeeProxyService {
     }
 
     @Override
-    public Integer updateLevel(EmployeeCommandLevelDTO employeeCommandDTO) {
+    public Integer updateLevel(String employeeId, String level) {
       return 0;
     }
 
