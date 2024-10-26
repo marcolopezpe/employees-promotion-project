@@ -41,7 +41,8 @@ public class LevelHistoryServiceImpl implements LevelHistoryService {
   public LevelHistoryQueryDTO addLevel(LevelHistoryCommandDTO levelHistoryCommandDTO) {
     return levelHistoryMapper
         .toQueryDTO(
-            levelHistoryRepository.save(levelHistoryMapper.toEntity(levelHistoryCommandDTO))
+            levelHistoryRepository.save(
+                levelHistoryMapper.toEntity(levelHistoryCommandDTO))
         );
 
   }

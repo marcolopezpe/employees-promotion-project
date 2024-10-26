@@ -96,11 +96,11 @@ public class PromotionServiceImpl implements PromotionService {
             employeeProxyService.add(
                 LevelHistoryCommandDTO
                     .builder()
-                    .employeeId(promotionQueryDTO.employeeId())
+                    .employeeId(promotionEvaluateLeaderDTO.employeeId())
                     .previousLevel(ConvertUtil.previousLevel(promotionQueryDTO.proposedLevel()))
                     .newLevel(promotionQueryDTO.proposedLevel())
                     .changeDate(LocalDate.now())
-                    .evaluatedBy(promotionQueryDTO.leaderId())
+                    .evaluatedBy(promotionEvaluateLeaderDTO.leaderId())
                     .comments(promotionQueryDTO.leaderComments())
                     .build()
             );

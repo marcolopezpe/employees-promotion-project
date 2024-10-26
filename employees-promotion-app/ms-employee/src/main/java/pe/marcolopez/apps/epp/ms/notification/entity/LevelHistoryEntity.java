@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pe.marcolopez.apps.epp.ms.notification.util.EmployeeLevel;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -22,11 +20,9 @@ public class LevelHistoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    @ManyToOne(targetEntity = EmployeeEntity.class)
-    @JoinColumn(name = "employee_id")
-    private EmployeeEntity employee;
-    private EmployeeLevel previousLevel;
-    private EmployeeLevel newLevel;
+    private UUID employeeId;
+    private String previousLevel;
+    private String newLevel;
     @Column(columnDefinition = "DATE")
     private LocalDate changeDate;
     private UUID evaluatedBy;

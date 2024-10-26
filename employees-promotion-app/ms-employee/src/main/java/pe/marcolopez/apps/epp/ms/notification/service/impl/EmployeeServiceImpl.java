@@ -1,5 +1,6 @@
 package pe.marcolopez.apps.epp.ms.notification.service.impl;
 
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.UUID;
 @Slf4j
 @Service
 @AllArgsConstructor
+@Transactional
 public class EmployeeServiceImpl implements EmployeeService {
 
   private final EmployeeMapper employeeMapper;
