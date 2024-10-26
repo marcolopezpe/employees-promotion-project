@@ -20,7 +20,7 @@ docker compose -f 01-pg-employee.yml \
 							 -f 06-mongo-query-promotion.yml \
 							 -f 07-zipkin-server.yml \
 							 -f 08-grafana-prometheus-server.yml \
-							 -f 09-hashicorp-vault-server.yml \
+							 -f 09-hashicorp-vault-server-dev.yml \
 							 -f 10-jasper-server.yml \
 				-p employees-promotion-app \
 				up -d
@@ -38,7 +38,7 @@ docker exec -it kafka-broker-1 kafka-topics --bootstrap-server localhost:19092 -
 
 echo ''
 echo '###########################################################'
-echo 'Creacion de los secretos en Hashicorp Vault'
+echo 'Creacion de secretos en Hashicorp Vault'
 echo '###########################################################'
 docker exec -it vault vault kv put secret/ms-employee db-host=localhost db-name=db_employee db-password=PGEmployeePass123 db-port=15432 db-username=postgres
 docker exec -it vault vault kv put secret/ms-criteria db-host=localhost db-name=db_criteria db-password=PGCriteriaPass123 db-port=25432 db-username=postgres
