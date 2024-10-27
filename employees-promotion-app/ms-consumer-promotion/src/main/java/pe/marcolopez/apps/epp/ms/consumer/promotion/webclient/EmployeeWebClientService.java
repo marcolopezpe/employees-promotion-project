@@ -18,17 +18,17 @@ public class EmployeeWebClientService {
   @Value("${ms.ms-employee.base-url}")
   private String msEmployeeBaseUrl;
 
-  @Value("${ms.ms-employee.methods.get.find-by-id")
+  @Value("${ms.ms-employee.methods.get.find-by-id}")
   private String findById;
 
   private final WebClient.Builder webClientBuilder;
 
   @CircuitBreaker(name = "ms-employee", fallbackMethod = "fallbackGetEmployeeById")
   public Mono<EmployeeQueryDTO> getEmployeeById(String employeeId) {
-    WebClient webClient = webClientBuilder.baseUrl(msEmployeeBaseUrl).build();
-    return webClient
+    return webClientBuilder
+        .build()
         .get()
-        .uri(findById, employeeId)
+        .uri(msEmployeeBaseUrl + findById, employeeId)
         .retrieve()
         .bodyToMono(EmployeeQueryDTO.class);
   }

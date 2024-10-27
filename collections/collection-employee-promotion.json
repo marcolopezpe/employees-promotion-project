@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "employee-promotion",
     "collectionId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
-    "dateExported": "2024-10-26T01:54:17.852Z",
+    "dateExported": "2024-10-27T05:25:07.693Z",
     "version": "1.2",
     "folders": [
         {
@@ -42,6 +42,18 @@
         }
     ],
     "requests": [
+        {
+            "_id": "d2ff4181-19c6-435d-ad4f-f4923b46ec3a",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "b6a4e711-5276-4434-9a54-d14ef1edfad6",
+            "name": "2.1) Promotions By Employee",
+            "url": "http://localhost:8765/api/promotion/promotions/employee/e04bd24d-8d7c-404d-8ac6-dce0158121eb",
+            "method": "GET",
+            "sortNum": 6250,
+            "created": "2024-10-26T02:23:45.327Z",
+            "modified": "2024-10-26T04:51:44.206Z",
+            "headers": []
+        },
         {
             "_id": "faa70998-fba8-40ae-9fc0-3b10fa5302fb",
             "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
@@ -91,7 +103,7 @@
             "_id": "5e5e05ee-6882-4497-a552-2a5fbb924cec",
             "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
             "containerId": "78091e23-7714-4e8f-b2b4-ff54e885ad3a",
-            "name": "Eligible Employees By Levels and Period",
+            "name": "1.1) Eligible Employees By Levels and Period",
             "url": "http://localhost:8765/api/criteria/criteria/eligible-employees?currentLevel=JUNIOR&newLevel=MIDDLE&periodLevel=2024",
             "method": "GET",
             "sortNum": 10000,
@@ -123,15 +135,32 @@
             ]
         },
         {
+            "_id": "b1a35ece-a746-4829-a403-ddcbc442ce89",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "b6a4e711-5276-4434-9a54-d14ef1edfad6",
+            "name": "2.2) Evaluation By Employee - DECLINED",
+            "url": "http://localhost:8765/api/promotion/promotions/evaluate/employee",
+            "method": "PUT",
+            "sortNum": 12500,
+            "created": "2024-10-25T10:17:35.088Z",
+            "modified": "2024-10-25T10:21:51.958Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"promotionId\": \"1e70f96f-7f3a-4fa3-aaaf-2ffb287e0011\",\n  \"employeeId\": \"06499dc8-8644-445c-a3ba-73ef12f2ac20\",\n  \"status\": \"DECLINED\"\n}",
+                "form": []
+            }
+        },
+        {
             "_id": "3fab0bd6-6b35-40c1-bf0b-3895382ea14f",
             "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
             "containerId": "78091e23-7714-4e8f-b2b4-ff54e885ad3a",
-            "name": "Criteria - Notify Eligible Employee",
+            "name": "1.2) Criteria - Notify Eligible Employee",
             "url": "http://localhost:8765/api/criteria/criteria/notify-eligible-employee",
             "method": "POST",
             "sortNum": 20000,
             "created": "2024-10-21T07:26:37.408Z",
-            "modified": "2024-10-25T09:45:10.188Z",
+            "modified": "2024-10-26T04:50:04.911Z",
             "headers": [
                 {
                     "name": "User-Agent",
@@ -141,7 +170,24 @@
             ],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"id\": \"06499dc8-8644-445c-a3ba-73ef12f2ac20\",\n  \"firstname\": \"MARCO ANTONIO\",\n  \"lastname\": \"LOPEZ CAMACHO\",\n  \"address\": \"LIMA PERU\",\n  \"email\": \"MARCOLOPEZPE@OUTLOOK.COM\",\n  \"currentLevel\": \"JUNIOR\",\n  \"hireDate\": \"2018-10-16\",\n  \"certifications\": 3,\n  \"productionProjects\": 3,\n  \"leaderId\": \"382e01e3-0bf2-46c2-827c-e9876a376c09\",\n  \"periodLevel\": 2024\n}",
+                "raw": "{\n  \"id\": \"e04bd24d-8d7c-404d-8ac6-dce0158121eb\",\n  \"firstname\": \"STEVE\",\n  \"lastname\": \"GREEN\",\n  \"address\": \"USA\",\n  \"email\": \"STEVE.GREEN@OUTLOOK.COM\",\n  \"currentLevel\": \"JUNIOR\",\n  \"hireDate\": \"2018-08-11\",\n  \"certifications\": 3,\n  \"productionProjects\": 3,\n  \"leaderId\": \"5575b699-d1cc-441b-a273-51fbc0f706b9\",\n  \"periodLevel\": 2024\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "c73ad4e2-40c5-4617-becd-ba6d53fbf23a",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "b6a4e711-5276-4434-9a54-d14ef1edfad6",
+            "name": "2.3) Evaluation By Employee - ACCEPTED",
+            "url": "http://localhost:8765/api/promotion/promotions/evaluate/employee",
+            "method": "PUT",
+            "sortNum": 25000,
+            "created": "2024-10-25T10:14:16.967Z",
+            "modified": "2024-10-26T04:52:35.611Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"promotionId\": \"a57cdefa-3e5a-41a4-885b-8488da71c936\",\n  \"employeeId\": \"e04bd24d-8d7c-404d-8ac6-dce0158121eb\",\n  \"status\": \"ACCEPTED\"\n}",
                 "form": []
             }
         },
@@ -158,28 +204,45 @@
             "headers": []
         },
         {
-            "_id": "e99152b7-13ec-40f9-9cc4-36091f19590e",
-            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
-            "containerId": "b6a4e711-5276-4434-9a54-d14ef1edfad6",
-            "name": "Promotions By Lead And Status",
-            "url": "http://localhost:8765/api/promotion/promotions/leader/382e01e3-0bf2-46c2-827c-e9876a376c09/status/PROMOTION",
-            "method": "GET",
-            "sortNum": 50000,
-            "created": "2024-10-25T04:23:45.956Z",
-            "modified": "2024-10-25T09:51:24.778Z",
-            "headers": []
-        },
-        {
             "_id": "12b40c7f-96e7-4a7f-9b52-448973959e77",
             "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
             "containerId": "b6a4e711-5276-4434-9a54-d14ef1edfad6",
-            "name": "Promotions By Lead",
-            "url": "http://localhost:8765/api/promotion/promotions/leader/382e01e3-0bf2-46c2-827c-e9876a376c09",
+            "name": "3.1) Promotions By Lead",
+            "url": "http://localhost:8765/api/promotion/promotions/leader/5575b699-d1cc-441b-a273-51fbc0f706b9",
             "method": "GET",
-            "sortNum": 60000,
+            "sortNum": 37500,
             "created": "2024-10-25T04:23:55.363Z",
-            "modified": "2024-10-25T09:45:46.234Z",
+            "modified": "2024-10-26T02:29:59.446Z",
             "headers": []
+        },
+        {
+            "_id": "e99152b7-13ec-40f9-9cc4-36091f19590e",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "b6a4e711-5276-4434-9a54-d14ef1edfad6",
+            "name": "3.2) Promotions By Lead And Status",
+            "url": "http://localhost:8765/api/promotion/promotions/leader/5575b699-d1cc-441b-a273-51fbc0f706b9/status/ACCEPTED",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-10-25T04:23:45.956Z",
+            "modified": "2024-10-26T02:30:37.764Z",
+            "headers": []
+        },
+        {
+            "_id": "b6f0d5eb-8dcd-4d25-b6c3-40614eca572c",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "b6a4e711-5276-4434-9a54-d14ef1edfad6",
+            "name": "3.3) Evaluation By Leader - REJECT",
+            "url": "http://localhost:8765/api/promotion/promotions/evaluate/leader",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2024-10-26T02:58:14.038Z",
+            "modified": "2024-10-26T03:01:21.750Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"promotionId\": \"e02baa35-d1d6-464f-8b09-83a7f514b556\",\n  \"employeeId\": \"72e8795a-5d0c-4cd9-b42e-76f7f9bed62d\",\n  \"leaderId\": \"5575b699-d1cc-441b-a273-51fbc0f706b9\",\n  \"status\": \"REJECTED\",\n  \"comments\": \"REJECTED BECAUSE THE CERTIFICATIONS ARE BASICS.\"\n}",
+                "form": []
+            }
         },
         {
             "_id": "f305af3c-1f13-4d8e-8bf5-5ad348c1c085",
@@ -194,6 +257,23 @@
             "headers": []
         },
         {
+            "_id": "9c2c6db8-6573-4ca8-83a1-054374fe74b0",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "b6a4e711-5276-4434-9a54-d14ef1edfad6",
+            "name": "3.4) Evaluation By Leader - APPROVED",
+            "url": "http://localhost:8765/api/promotion/promotions/evaluate/leader",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2024-10-26T03:00:51.339Z",
+            "modified": "2024-10-26T04:54:32.816Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"promotionId\": \"a57cdefa-3e5a-41a4-885b-8488da71c936\",\n  \"employeeId\": \"e04bd24d-8d7c-404d-8ac6-dce0158121eb\",\n  \"leaderId\": \"5575b699-d1cc-441b-a273-51fbc0f706b9\",\n  \"status\": \"APPROVED\",\n  \"comments\": \"OK PROMOTION TO NEW LEVEL 2.\"\n}",
+                "form": []
+            }
+        },
+        {
             "_id": "7fbe626c-eb3d-4ff1-88bc-967950ab2e04",
             "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
             "containerId": "21a78658-50fc-4f02-8642-e1f2f1d403d0",
@@ -204,41 +284,7 @@
             "created": "2024-10-25T08:55:54.794Z",
             "modified": "2024-10-25T09:08:54.237Z",
             "headers": []
-        },
-        {
-            "_id": "c73ad4e2-40c5-4617-becd-ba6d53fbf23a",
-            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
-            "containerId": "b6a4e711-5276-4434-9a54-d14ef1edfad6",
-            "name": "Evaluation By Employee - ACCEPTED",
-            "url": "http://localhost:8765/api/promotion/promotions/evaluate/employee",
-            "method": "PUT",
-            "sortNum": 90000,
-            "created": "2024-10-25T10:14:16.967Z",
-            "modified": "2024-10-25T10:20:39.181Z",
-            "headers": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"promotionId\": \"1e70f96f-7f3a-4fa3-aaaf-2ffb287e0011\",\n  \"employeeId\": \"06499dc8-8644-445c-a3ba-73ef12f2ac20\",\n  \"status\": \"ACCEPTED\"\n}",
-                "form": []
-            }
-        },
-        {
-            "_id": "b1a35ece-a746-4829-a403-ddcbc442ce89",
-            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
-            "containerId": "b6a4e711-5276-4434-9a54-d14ef1edfad6",
-            "name": "Evaluation By Employee - DECLINED",
-            "url": "http://localhost:8765/api/promotion/promotions/evaluate/employee",
-            "method": "PUT",
-            "sortNum": 100000,
-            "created": "2024-10-25T10:17:35.088Z",
-            "modified": "2024-10-25T10:21:51.958Z",
-            "headers": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"promotionId\": \"1e70f96f-7f3a-4fa3-aaaf-2ffb287e0011\",\n  \"employeeId\": \"06499dc8-8644-445c-a3ba-73ef12f2ac20\",\n  \"status\": \"DECLINED\"\n}",
-                "form": []
-            }
         }
     ],
-    "ref": "aJi1frGBN9yMNMgjZapvJZIz9v1SO8xswI3lM3yJcRhEHr-qtBweCKrn27r8KfukPy6QG1Do-r0EA4LRId-gzQ"
+    "ref": "aJi1frGBN9yMNMgjZapvJS2gZfBRzdfZcnSlr-oh-o6y6DFjZMcEgl4h8sMpvHbHwwe-KX8yhqwl-qcP9cT62Q"
 }

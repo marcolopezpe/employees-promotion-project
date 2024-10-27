@@ -53,7 +53,7 @@ logging:
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
     org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
   file:
-    name: ${LOG.FILE.PATH:./logs}/${LOG.FILE.NAME:ms-command-promotion.log}
+    name: ${LOG.FILE.PATH:./logs}/${LOG.FILE.NAME:ms-consumer-promotion.log}
 
 management:
   zipkin:
@@ -83,4 +83,4 @@ management:
           show-component: always
           show-details: always
     logfile:
-      external_file: ${LOG.FILE.PATH:./logs}/${LOG.FILE.NAME:ms-command-promotion.log}
+      external_file: ${LOG.FILE.PATH:./logs}/${LOG.FILE.NAME:ms-consumer-promotion.log}

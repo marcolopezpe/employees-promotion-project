@@ -7,9 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Builder
 @Data
@@ -19,10 +17,10 @@ import java.util.UUID;
 public class PromotionDocument {
 
   @Id
-  private UUID id;
+  private String id;
 
   @Field(name = "employee_id")
-  private UUID employeeId;
+  private String employeeId;
 
   @Field(name = "employee_firstname")
   private String employeeFirstname;
@@ -37,13 +35,13 @@ public class PromotionDocument {
   private String status;
 
   @Field(name = "requestDate")
-  private LocalDate requestDate;
+  private String requestDate;
 
   @Field(name = "decision_date")
-  private LocalDate decisionDate;
+  private String decisionDate;
 
   @Field(name = "leader_id")
-  private UUID leaderId;
+  private String leaderId;
 
   @Field(name = "leader_firstname")
   private String leaderFirstname;

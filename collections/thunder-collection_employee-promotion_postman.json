@@ -1,0 +1,402 @@
+{
+    "info": {
+        "_postman_id": "6d563560-25ed-4360-bf8c-d4cddece6e2e",
+        "name": "employee-promotion",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "ms-employee",
+            "item": [
+                {
+                    "name": "Eligibles Employees By Filters",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8765/api/employee/employees/eligible-employees?currentLevel=JUNIOR&years=5&certifications=3&projects=3&periodLevel=2024",
+                            "query": [
+                                {
+                                    "key": "currentLevel",
+                                    "value": "JUNIOR"
+                                },
+                                {
+                                    "key": "years",
+                                    "value": "5"
+                                },
+                                {
+                                    "key": "certifications",
+                                    "value": "3"
+                                },
+                                {
+                                    "key": "projects",
+                                    "value": "3"
+                                },
+                                {
+                                    "key": "periodLevel",
+                                    "value": "2024"
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "api",
+                                "employee",
+                                "employees",
+                                "eligible-employees"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8765"
+                        },
+                        "header": [
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "ms-criteria",
+            "item": [
+                {
+                    "name": "1.1) Eligible Employees By Levels and Period",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8765/api/criteria/criteria/eligible-employees?currentLevel=JUNIOR&newLevel=MIDDLE&periodLevel=2024",
+                            "query": [
+                                {
+                                    "key": "currentLevel",
+                                    "value": "JUNIOR"
+                                },
+                                {
+                                    "key": "newLevel",
+                                    "value": "MIDDLE"
+                                },
+                                {
+                                    "key": "periodLevel",
+                                    "value": "2024"
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "api",
+                                "criteria",
+                                "criteria",
+                                "eligible-employees"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8765"
+                        },
+                        "header": [
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "1.2) Criteria - Notify Eligible Employee",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:8765/api/criteria/criteria/notify-eligible-employee",
+                            "path": [
+                                "api",
+                                "criteria",
+                                "criteria",
+                                "notify-eligible-employee"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8765"
+                        },
+                        "header": [
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"id\": \"e04bd24d-8d7c-404d-8ac6-dce0158121eb\",\n  \"firstname\": \"STEVE\",\n  \"lastname\": \"GREEN\",\n  \"address\": \"USA\",\n  \"email\": \"STEVE.GREEN@OUTLOOK.COM\",\n  \"currentLevel\": \"JUNIOR\",\n  \"hireDate\": \"2018-08-11\",\n  \"certifications\": 3,\n  \"productionProjects\": 3,\n  \"leaderId\": \"5575b699-d1cc-441b-a273-51fbc0f706b9\",\n  \"periodLevel\": 2024\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "config-server",
+            "item": [
+                {
+                    "name": "Check Config Properties",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8888/monitoring-service/dev",
+                            "path": [
+                                "monitoring-service",
+                                "dev"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8888"
+                        }
+                    }
+                },
+                {
+                    "name": "Check Actuator Health",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8888/actuator/health",
+                            "path": [
+                                "actuator",
+                                "health"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8888"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "ms-command-promotion",
+            "item": [
+                {
+                    "name": "3.2) Promotions By Lead And Status",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8765/api/promotion/promotions/leader/5575b699-d1cc-441b-a273-51fbc0f706b9/status/ACCEPTED",
+                            "path": [
+                                "api",
+                                "promotion",
+                                "promotions",
+                                "leader",
+                                "5575b699-d1cc-441b-a273-51fbc0f706b9",
+                                "status",
+                                "ACCEPTED"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8765"
+                        }
+                    }
+                },
+                {
+                    "name": "3.1) Promotions By Lead",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8765/api/promotion/promotions/leader/5575b699-d1cc-441b-a273-51fbc0f706b9",
+                            "path": [
+                                "api",
+                                "promotion",
+                                "promotions",
+                                "leader",
+                                "5575b699-d1cc-441b-a273-51fbc0f706b9"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8765"
+                        }
+                    }
+                },
+                {
+                    "name": "2.3) Evaluation By Employee - ACCEPTED",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:8765/api/promotion/promotions/evaluate/employee",
+                            "path": [
+                                "api",
+                                "promotion",
+                                "promotions",
+                                "evaluate",
+                                "employee"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8765"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"promotionId\": \"a57cdefa-3e5a-41a4-885b-8488da71c936\",\n  \"employeeId\": \"e04bd24d-8d7c-404d-8ac6-dce0158121eb\",\n  \"status\": \"ACCEPTED\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "2.2) Evaluation By Employee - DECLINED",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:8765/api/promotion/promotions/evaluate/employee",
+                            "path": [
+                                "api",
+                                "promotion",
+                                "promotions",
+                                "evaluate",
+                                "employee"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8765"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"promotionId\": \"1e70f96f-7f3a-4fa3-aaaf-2ffb287e0011\",\n  \"employeeId\": \"06499dc8-8644-445c-a3ba-73ef12f2ac20\",\n  \"status\": \"DECLINED\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "2.1) Promotions By Employee",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8765/api/promotion/promotions/employee/e04bd24d-8d7c-404d-8ac6-dce0158121eb",
+                            "path": [
+                                "api",
+                                "promotion",
+                                "promotions",
+                                "employee",
+                                "e04bd24d-8d7c-404d-8ac6-dce0158121eb"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8765"
+                        }
+                    }
+                },
+                {
+                    "name": "3.3) Evaluation By Leader - REJECT",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:8765/api/promotion/promotions/evaluate/leader",
+                            "path": [
+                                "api",
+                                "promotion",
+                                "promotions",
+                                "evaluate",
+                                "leader"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8765"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"promotionId\": \"e02baa35-d1d6-464f-8b09-83a7f514b556\",\n  \"employeeId\": \"72e8795a-5d0c-4cd9-b42e-76f7f9bed62d\",\n  \"leaderId\": \"5575b699-d1cc-441b-a273-51fbc0f706b9\",\n  \"status\": \"REJECTED\",\n  \"comments\": \"REJECTED BECAUSE THE CERTIFICATIONS ARE BASICS.\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "3.4) Evaluation By Leader - APPROVED",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:8765/api/promotion/promotions/evaluate/leader",
+                            "path": [
+                                "api",
+                                "promotion",
+                                "promotions",
+                                "evaluate",
+                                "leader"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8765"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"promotionId\": \"a57cdefa-3e5a-41a4-885b-8488da71c936\",\n  \"employeeId\": \"e04bd24d-8d7c-404d-8ac6-dce0158121eb\",\n  \"leaderId\": \"5575b699-d1cc-441b-a273-51fbc0f706b9\",\n  \"status\": \"APPROVED\",\n  \"comments\": \"OK PROMOTION TO NEW LEVEL 2.\"\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "api-gateway",
+            "item": [
+                {
+                    "name": "Refresh Actuator",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:8765/actuator/refresh",
+                            "path": [
+                                "actuator",
+                                "refresh"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8765"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -2,7 +2,6 @@ package pe.marcolopez.apps.epp.ms.consumer.promotion.util;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 
 public class DateUtil {
 
@@ -10,8 +9,8 @@ public class DateUtil {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
     try {
       return LocalDate.parse(dateString, formatter);
-    } catch (DateTimeParseException e) {
-      throw new IllegalArgumentException("Fecha inválida: " + dateString, e);
+    } catch (Exception ignored) {
+      return null;
     }
   }
 }
