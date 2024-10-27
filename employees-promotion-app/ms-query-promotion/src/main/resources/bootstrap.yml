@@ -1,0 +1,21 @@
+encrypt:
+  key: ${ENCRYPT.KEY:employee-promotion-secret-key}
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: ms-consumer-promotion
+  config:
+    import: vault://
+  cloud:
+    vault:
+      scheme: http
+      host: localhost
+      port: 8200
+      application-name: ms-consumer-promotion
+      token: ${VAULT_TOKEN:token-initial-for-root}
+    config:
+      uri: ${CONFIG.SERVER.HOSTNAME:http://localhost:8888}
+      enabled: true
+      profile: ${CONFIG.SERVER.PROFILE:dev}

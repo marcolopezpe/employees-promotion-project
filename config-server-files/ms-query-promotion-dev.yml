@@ -1,0 +1,55 @@
+server:
+  port: ${CUSTOM.SERVER.PORT:8004}
+
+encrypt:
+  key: ${ENCRYPT.KEY:employees-promotion-secret-key}
+
+spring:
+  application:
+    name: ms-query-promotion
+  data:
+    mongodb:
+      database: ${db-name}
+      username: ${db-username}
+      password: ${db-password}
+      port: ${db-port}
+      authentication-database: admin
+      auto-index-create: true
+
+logging:
+  level:
+    org.hibernate.SQL: TRACE
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+  file:
+    name: ${LOG.FILE.PATH:./logs}/${LOG.FILE.NAME:ms-query-promotion.log}
+
+management:
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN.ENDPOINT:http://localhost:9411/api/v2/spans}
+  auditevents:
+    enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /actuator
+    health:
+      show-details: always
+      show-components: always
+  info:
+    env:
+      enabled: true
+  health:
+    env:
+      enabled: true
+  endpoint:
+    health:
+      group:
+        custom:
+          include: diskSpace, ping, memory, mem
+          show-component: always
+          show-details: always
+    logfile:
+      external_file: ${LOG.FILE.PATH:./logs}/${LOG.FILE.NAME:ms-query-promotion.log}
