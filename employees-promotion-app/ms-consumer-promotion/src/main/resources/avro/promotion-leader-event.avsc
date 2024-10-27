@@ -1,0 +1,52 @@
+{
+  "type": "record",
+  "name": "PromotionLeaderEvent",
+  "namespace": "pe.marcolopez.apps.epp.ms.kafka.event",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "employeeId",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "proposedLevel",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "requestDate",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "decisionDate",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "leaderId",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "leaderComments",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "period",
+      "type": ["null", "int"],
+      "default": null
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+server:
+  port: ${CUSTOM.SERVER.PORT:8005}
+
+encrypt:
+  key: ${ENCRYPT.KEY:employees-promotion-secret-key}
+
+spring:
+  application:
+    name: ms-consumer-promotion
+  data:
+    mongodb:
+      database: ${db-name}
+      username: ${db-username}
+      password: ${db-password}
+      port: ${db-port}
+      authentication-database: admin
+      auto-index-create: true
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+      client:
+        config:
+          default:
+            connectTimeout: 5000
+            readTimeout: 5000
+            loggerLevel: basic
+
+kafka:
+  boostrap-servers: ${KAFKA.SERVERS:localhost:19092}
+  schema-registry-url: http://localhost:8081
+  consumer:
+    topic-prom-emp-evaluate: ${KAFKA.PRODUCER.TOPIC.PROM.EMP.EVALUATE:topic-prom-emp-evaluate}
+    topic-prom-leader-evaluate: ${KAFKA.PRODUCER.TOPIC.PROM.LEADER.EVALUATE:topic-prom-leader-evaluate}
+    group-id: ${KAFKA.CONSUMER.GROUP.ID:ms-notification-group-03}
+    auto-offset-reset: earliest
+    enable-auto-commit: false
+
+ms:
+  ms-employee:
+    base-url: http://ms-employee
+    timeout: 3000
+    methods:
+      get:
+        find-by-id: /employees/{id}
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      ms-employee:
+        register-health-indicator: true
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 5
+        automatic-transition-from-open-to-half-open-enabled: true
+        wait-duration-in-open-state: 10s
+        permitted-number-of-calls-in-half-open-state: 3
+        sliding-window-size: 10
+        sliding-window-type: COUNT_BASED
+
+logging:
+  level:
+    org.hibernate.SQL: TRACE
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+  file:
+    name: ${LOG.FILE.PATH:./logs}/${LOG.FILE.NAME:ms-command-promotion.log}
+
+management:
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN.ENDPOINT:http://localhost:9411/api/v2/spans}
+  auditevents:
+    enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /actuator
+    health:
+      show-details: always
+      show-components: always
+  info:
+    env:
+      enabled: true
+  health:
+    env:
+      enabled: true
+  endpoint:
+    health:
+      group:
+        custom:
+          include: diskSpace, ping, memory, mem
+          show-component: always
+          show-details: always
+    logfile:
+      external_file: ${LOG.FILE.PATH:./logs}/${LOG.FILE.NAME:ms-command-promotion.log}
