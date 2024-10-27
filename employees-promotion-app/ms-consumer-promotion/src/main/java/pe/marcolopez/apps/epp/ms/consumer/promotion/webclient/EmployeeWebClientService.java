@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import pe.marcolopez.apps.epp.ms.consumer.promotion.dto.EmployeeQueryDTO;
 import reactor.core.publisher.Mono;
-
 import java.util.UUID;
 
 @Slf4j
@@ -18,9 +17,6 @@ public class EmployeeWebClientService {
 
   @Value("${ms.ms-employee.base-url}")
   private String msEmployeeBaseUrl;
-
-  @Value("${ms.ms-employee.timeout}")
-  private int timeout;
 
   @Value("${ms.ms-employee.methods.get.find-by-id")
   private String findById;

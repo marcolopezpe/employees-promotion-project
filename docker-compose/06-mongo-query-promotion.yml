@@ -23,7 +23,7 @@ services:
     environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
       - ME_CONFIG_MONGODB_ADMINPASSWORD=MongoPromPass
-      - ME_CONFIG_MONGODB_URL=mongodb://root:MongoPromPass@mongo-prom:27017/db_promotion?authSource=admin
+      - ME_CONFIG_MONGODB_URL=mongodb://root:MongoPromPass@mongo-promotion:27017/db_promotion?authSource=admin
     depends_on:
       - mongo-promotion
     networks:
