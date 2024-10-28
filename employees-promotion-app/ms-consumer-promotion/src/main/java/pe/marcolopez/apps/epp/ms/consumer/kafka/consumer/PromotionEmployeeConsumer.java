@@ -26,7 +26,8 @@ public class PromotionEmployeeConsumer {
 
   @KafkaListener(
       topics = "${kafka.consumer.topic-prom-emp-evaluate}",
-      groupId = "${kafka.consumer.group-id}"
+      groupId = "${kafka.consumer.group-id}",
+      containerFactory = "employeeEventConcurrentKafkaListenerContainerFactory"
   )
   public void consumePromotionByEmployee(ConsumerRecord<String, PromotionEmployeeEvent> record,
                                          Acknowledgment ack) {
@@ -70,7 +71,8 @@ public class PromotionEmployeeConsumer {
 
   @KafkaListener(
       topics = "${kafka.consumer.topic-prom-leader-evaluate}",
-      groupId = "${kafka.consumer.group-id}"
+      groupId = "${kafka.consumer.group-id}",
+      containerFactory = "employeeLeaderEventConcurrentKafkaListenerContainerFactory"
   )
   public void consumePromotionByLeader(ConsumerRecord<String, PromotionLeaderEvent> record,
                                        Acknowledgment ack) {
