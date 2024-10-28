@@ -1,10 +1,10 @@
-package pe.marcolopez.apps.epp.ms.consumer.mapper;
+package pe.marcolopez.apps.epp.ms.query.promotion.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import pe.marcolopez.apps.epp.ms.consumer.document.PromotionDocument;
-import pe.marcolopez.apps.epp.ms.consumer.dto.EmployeeQueryDTO;
-import pe.marcolopez.apps.epp.ms.consumer.dto.PromotionQueryDTO;
+import pe.marcolopez.apps.epp.ms.query.promotion.document.PromotionDocument;
+import pe.marcolopez.apps.epp.ms.query.promotion.dto.EmployeeQueryDTO;
+import pe.marcolopez.apps.epp.ms.query.promotion.dto.PromotionQueryDTO;
 
 @Mapper(componentModel = "spring")
 public interface PromotionMapper {

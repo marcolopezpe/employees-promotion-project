@@ -1,4 +1,4 @@
-package pe.marcolopez.apps.epp.ms.consumer.dto;
+package pe.marcolopez.apps.epp.ms.query.promotion.dto;
 
 import lombok.Builder;
 

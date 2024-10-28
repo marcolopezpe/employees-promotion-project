@@ -1,4 +1,4 @@
-package pe.marcolopez.apps.epp.ms.consumer.document;
+package pe.marcolopez.apps.epp.ms.query.promotion.document;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
