@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "employee-promotion",
     "collectionId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
-    "dateExported": "2024-10-27T05:25:07.693Z",
+    "dateExported": "2024-10-28T06:10:37.389Z",
     "version": "1.2",
     "folders": [
         {
@@ -39,6 +39,13 @@
             "containerId": "",
             "created": "2024-10-25T04:22:00.312Z",
             "sortNum": 40000
+        },
+        {
+            "_id": "e5cf34ae-0c1a-4974-8953-4e553773df25",
+            "name": "ms-query-promotion",
+            "containerId": "",
+            "created": "2024-10-27T07:52:01.844Z",
+            "sortNum": 50000
         }
     ],
     "requests": [
@@ -47,11 +54,11 @@
             "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
             "containerId": "b6a4e711-5276-4434-9a54-d14ef1edfad6",
             "name": "2.1) Promotions By Employee",
-            "url": "http://localhost:8765/api/promotion/promotions/employee/e04bd24d-8d7c-404d-8ac6-dce0158121eb",
+            "url": "http://localhost:8765/api/promotion/promotions/employee/b9590744-8ba7-4656-83c7-f7a10b48c180",
             "method": "GET",
             "sortNum": 6250,
             "created": "2024-10-26T02:23:45.327Z",
-            "modified": "2024-10-26T04:51:44.206Z",
+            "modified": "2024-10-28T05:53:33.343Z",
             "headers": []
         },
         {
@@ -160,7 +167,7 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2024-10-21T07:26:37.408Z",
-            "modified": "2024-10-26T04:50:04.911Z",
+            "modified": "2024-10-28T05:53:11.860Z",
             "headers": [
                 {
                     "name": "User-Agent",
@@ -170,7 +177,7 @@
             ],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"id\": \"e04bd24d-8d7c-404d-8ac6-dce0158121eb\",\n  \"firstname\": \"STEVE\",\n  \"lastname\": \"GREEN\",\n  \"address\": \"USA\",\n  \"email\": \"STEVE.GREEN@OUTLOOK.COM\",\n  \"currentLevel\": \"JUNIOR\",\n  \"hireDate\": \"2018-08-11\",\n  \"certifications\": 3,\n  \"productionProjects\": 3,\n  \"leaderId\": \"5575b699-d1cc-441b-a273-51fbc0f706b9\",\n  \"periodLevel\": 2024\n}",
+                "raw": "{\n  \"id\": \"b9590744-8ba7-4656-83c7-f7a10b48c180\",\n  \"firstname\": \"MARCO ANTONIO\",\n  \"lastname\": \"LOPEZ CAMACHO\",\n  \"address\": \"LIMA PERU\",\n  \"email\": \"MARCOLOPEZPE@OUTLOOK.COM\",\n  \"currentLevel\": \"JUNIOR\",\n  \"hireDate\": \"2018-10-16\",\n  \"certifications\": 3,\n  \"productionProjects\": 3,\n  \"leaderId\": \"5f038f98-e1f4-48be-8878-2663884a028b\",\n  \"periodLevel\": 2024\n}",
                 "form": []
             }
         },
@@ -183,11 +190,11 @@
             "method": "PUT",
             "sortNum": 25000,
             "created": "2024-10-25T10:14:16.967Z",
-            "modified": "2024-10-26T04:52:35.611Z",
+            "modified": "2024-10-28T05:54:04.107Z",
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"promotionId\": \"a57cdefa-3e5a-41a4-885b-8488da71c936\",\n  \"employeeId\": \"e04bd24d-8d7c-404d-8ac6-dce0158121eb\",\n  \"status\": \"ACCEPTED\"\n}",
+                "raw": "{\n  \"promotionId\": \"59842f9f-f6ea-4f64-87ae-cb71e736604c\",\n  \"employeeId\": \"b9590744-8ba7-4656-83c7-f7a10b48c180\",\n  \"status\": \"ACCEPTED\"\n}",
                 "form": []
             }
         },
@@ -196,11 +203,11 @@
             "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
             "containerId": "1576df86-c1d9-4410-8e67-9e7dd1dbb07e",
             "name": "Check Config Properties",
-            "url": "http://localhost:8888/monitoring-service/dev",
+            "url": "http://localhost:8888/api-gateway/dev",
             "method": "GET",
             "sortNum": 30000,
             "created": "2024-10-21T04:45:24.968Z",
-            "modified": "2024-10-25T06:46:55.554Z",
+            "modified": "2024-10-27T07:12:46.176Z",
             "headers": []
         },
         {
@@ -208,11 +215,11 @@
             "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
             "containerId": "b6a4e711-5276-4434-9a54-d14ef1edfad6",
             "name": "3.1) Promotions By Lead",
-            "url": "http://localhost:8765/api/promotion/promotions/leader/5575b699-d1cc-441b-a273-51fbc0f706b9",
+            "url": "http://localhost:8765/api/promotion/promotions/leader/5f038f98-e1f4-48be-8878-2663884a028b",
             "method": "GET",
             "sortNum": 37500,
             "created": "2024-10-25T04:23:55.363Z",
-            "modified": "2024-10-26T02:29:59.446Z",
+            "modified": "2024-10-28T05:54:41.185Z",
             "headers": []
         },
         {
@@ -220,11 +227,11 @@
             "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
             "containerId": "b6a4e711-5276-4434-9a54-d14ef1edfad6",
             "name": "3.2) Promotions By Lead And Status",
-            "url": "http://localhost:8765/api/promotion/promotions/leader/5575b699-d1cc-441b-a273-51fbc0f706b9/status/ACCEPTED",
+            "url": "http://localhost:8765/api/promotion/promotions/leader/69ac576f-0fd7-4a0e-95a6-d42b4b37cbe3/status/ACCEPTED",
             "method": "GET",
             "sortNum": 50000,
             "created": "2024-10-25T04:23:45.956Z",
-            "modified": "2024-10-26T02:30:37.764Z",
+            "modified": "2024-10-27T05:35:24.305Z",
             "headers": []
         },
         {
@@ -265,11 +272,11 @@
             "method": "PUT",
             "sortNum": 70000,
             "created": "2024-10-26T03:00:51.339Z",
-            "modified": "2024-10-26T04:54:32.816Z",
+            "modified": "2024-10-28T05:55:16.701Z",
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"promotionId\": \"a57cdefa-3e5a-41a4-885b-8488da71c936\",\n  \"employeeId\": \"e04bd24d-8d7c-404d-8ac6-dce0158121eb\",\n  \"leaderId\": \"5575b699-d1cc-441b-a273-51fbc0f706b9\",\n  \"status\": \"APPROVED\",\n  \"comments\": \"OK PROMOTION TO NEW LEVEL 2.\"\n}",
+                "raw": "{\n  \"promotionId\": \"59842f9f-f6ea-4f64-87ae-cb71e736604c\",\n  \"employeeId\": \"b9590744-8ba7-4656-83c7-f7a10b48c180\",\n  \"leaderId\": \"5f038f98-e1f4-48be-8878-2663884a028b\",\n  \"status\": \"APPROVED\",\n  \"comments\": \"OK PROMOTION TO NEW LEVEL\"\n}",
                 "form": []
             }
         },
@@ -282,9 +289,21 @@
             "method": "POST",
             "sortNum": 80000,
             "created": "2024-10-25T08:55:54.794Z",
-            "modified": "2024-10-25T09:08:54.237Z",
+            "modified": "2024-10-27T08:27:53.353Z",
+            "headers": []
+        },
+        {
+            "_id": "c6ca8f65-9eb7-45b8-b277-aed3f605ddd9",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "e5cf34ae-0c1a-4974-8953-4e553773df25",
+            "name": "4) Query Promotions",
+            "url": "http://localhost:8765/api/query-promotion/promotions",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2024-10-27T07:52:25.348Z",
+            "modified": "2024-10-28T03:20:55.640Z",
             "headers": []
         }
     ],
-    "ref": "aJi1frGBN9yMNMgjZapvJS2gZfBRzdfZcnSlr-oh-o6y6DFjZMcEgl4h8sMpvHbHwwe-KX8yhqwl-qcP9cT62Q"
+    "ref": "aJi1frGBN9yMNMgjZapvJX4lT-8c-MxojsTrcnAjf05iufKcaZmxFs39fgiuKDdzz6jFkYQ8QadFRLBeAcGQnA"
 }

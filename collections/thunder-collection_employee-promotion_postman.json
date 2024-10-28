@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "6d563560-25ed-4360-bf8c-d4cddece6e2e",
+        "_postman_id": "03487b5a-89f8-4678-b888-aa44521b901e",
         "name": "employee-promotion",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -138,7 +138,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\n  \"id\": \"e04bd24d-8d7c-404d-8ac6-dce0158121eb\",\n  \"firstname\": \"STEVE\",\n  \"lastname\": \"GREEN\",\n  \"address\": \"USA\",\n  \"email\": \"STEVE.GREEN@OUTLOOK.COM\",\n  \"currentLevel\": \"JUNIOR\",\n  \"hireDate\": \"2018-08-11\",\n  \"certifications\": 3,\n  \"productionProjects\": 3,\n  \"leaderId\": \"5575b699-d1cc-441b-a273-51fbc0f706b9\",\n  \"periodLevel\": 2024\n}"
+                            "raw": "{\n  \"id\": \"b9590744-8ba7-4656-83c7-f7a10b48c180\",\n  \"firstname\": \"MARCO ANTONIO\",\n  \"lastname\": \"LOPEZ CAMACHO\",\n  \"address\": \"LIMA PERU\",\n  \"email\": \"MARCOLOPEZPE@OUTLOOK.COM\",\n  \"currentLevel\": \"JUNIOR\",\n  \"hireDate\": \"2018-10-16\",\n  \"certifications\": 3,\n  \"productionProjects\": 3,\n  \"leaderId\": \"5f038f98-e1f4-48be-8878-2663884a028b\",\n  \"periodLevel\": 2024\n}"
                         }
                     }
                 }
@@ -152,9 +152,9 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8888/monitoring-service/dev",
+                            "raw": "http://localhost:8888/api-gateway/dev",
                             "path": [
-                                "monitoring-service",
+                                "api-gateway",
                                 "dev"
                             ],
                             "protocol": "http",
@@ -193,13 +193,13 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8765/api/promotion/promotions/leader/5575b699-d1cc-441b-a273-51fbc0f706b9/status/ACCEPTED",
+                            "raw": "http://localhost:8765/api/promotion/promotions/leader/69ac576f-0fd7-4a0e-95a6-d42b4b37cbe3/status/ACCEPTED",
                             "path": [
                                 "api",
                                 "promotion",
                                 "promotions",
                                 "leader",
-                                "5575b699-d1cc-441b-a273-51fbc0f706b9",
+                                "69ac576f-0fd7-4a0e-95a6-d42b4b37cbe3",
                                 "status",
                                 "ACCEPTED"
                             ],
@@ -216,13 +216,13 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8765/api/promotion/promotions/leader/5575b699-d1cc-441b-a273-51fbc0f706b9",
+                            "raw": "http://localhost:8765/api/promotion/promotions/leader/5f038f98-e1f4-48be-8878-2663884a028b",
                             "path": [
                                 "api",
                                 "promotion",
                                 "promotions",
                                 "leader",
-                                "5575b699-d1cc-441b-a273-51fbc0f706b9"
+                                "5f038f98-e1f4-48be-8878-2663884a028b"
                             ],
                             "protocol": "http",
                             "host": [
@@ -258,7 +258,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\n  \"promotionId\": \"a57cdefa-3e5a-41a4-885b-8488da71c936\",\n  \"employeeId\": \"e04bd24d-8d7c-404d-8ac6-dce0158121eb\",\n  \"status\": \"ACCEPTED\"\n}"
+                            "raw": "{\n  \"promotionId\": \"59842f9f-f6ea-4f64-87ae-cb71e736604c\",\n  \"employeeId\": \"b9590744-8ba7-4656-83c7-f7a10b48c180\",\n  \"status\": \"ACCEPTED\"\n}"
                         }
                     }
                 },
@@ -297,13 +297,13 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8765/api/promotion/promotions/employee/e04bd24d-8d7c-404d-8ac6-dce0158121eb",
+                            "raw": "http://localhost:8765/api/promotion/promotions/employee/b9590744-8ba7-4656-83c7-f7a10b48c180",
                             "path": [
                                 "api",
                                 "promotion",
                                 "promotions",
                                 "employee",
-                                "e04bd24d-8d7c-404d-8ac6-dce0158121eb"
+                                "b9590744-8ba7-4656-83c7-f7a10b48c180"
                             ],
                             "protocol": "http",
                             "host": [
@@ -369,7 +369,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\n  \"promotionId\": \"a57cdefa-3e5a-41a4-885b-8488da71c936\",\n  \"employeeId\": \"e04bd24d-8d7c-404d-8ac6-dce0158121eb\",\n  \"leaderId\": \"5575b699-d1cc-441b-a273-51fbc0f706b9\",\n  \"status\": \"APPROVED\",\n  \"comments\": \"OK PROMOTION TO NEW LEVEL 2.\"\n}"
+                            "raw": "{\n  \"promotionId\": \"59842f9f-f6ea-4f64-87ae-cb71e736604c\",\n  \"employeeId\": \"b9590744-8ba7-4656-83c7-f7a10b48c180\",\n  \"leaderId\": \"5f038f98-e1f4-48be-8878-2663884a028b\",\n  \"status\": \"APPROVED\",\n  \"comments\": \"OK PROMOTION TO NEW LEVEL\"\n}"
                         }
                     }
                 }
@@ -387,6 +387,30 @@
                             "path": [
                                 "actuator",
                                 "refresh"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8765"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "ms-query-promotion",
+            "item": [
+                {
+                    "name": "4) Query Promotions",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8765/api/query-promotion/promotions",
+                            "path": [
+                                "api",
+                                "query-promotion",
+                                "promotions"
                             ],
                             "protocol": "http",
                             "host": [
