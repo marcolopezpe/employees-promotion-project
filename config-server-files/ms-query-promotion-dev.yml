@@ -7,8 +7,6 @@ encrypt:
 spring:
   application:
     name: ms-query-promotion
-  main:
-    web-application-type: reactive
   data:
     mongodb:
       database: ${db-name}
