@@ -41,7 +41,7 @@ echo '###########################################################'
 echo 'Creacion de secretos en Hashicorp Vault'
 echo '###########################################################'
 docker exec -it vault vault kv put secret/ms-employee db-host=localhost db-name=db_employee db-password=PGEmployeePass123 db-port=15432 db-username=postgres
-docker exec -it vault vault kv put secret/ms-criteria db-host=localhost db-name=db_criteria db-password=PGCriteriaPass123 db-port=25432 db-username=postgres
+docker exec -it vault vault kv put secret/ms-criteria db-host=localhost db-name=db_criteria db-password=PGCriteriaPass123 db-port=25432 db-username=postgres redis-host=localhost redis-port=6379 redis-username=default redis-password=PasswordRedis
 docker exec -it vault vault kv put secret/ms-command-promotion db-host=localhost db-name=db_command_promotion db-password=PGCommandPromotionPass123 db-port=35432 db-username=postgres
 docker exec -it vault vault kv put secret/ms-consumer-promotion db-host=localhost db-name=db_promotion db-password=MongoPromPass db-port=27017 db-username=root
 docker exec -it vault vault kv put secret/ms-query-promotion db-host=localhost db-name=db_promotion db-password=MongoPromPass db-port=27017 db-username=root
