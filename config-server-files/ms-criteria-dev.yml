@@ -58,6 +58,8 @@ logging:
     org.hibernate.SQL: TRACE
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
     org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+    org.springframework.data.redis: DEBUG
+    io.lettuce.core: DEBUG
   file:
     name: ${LOG.FILE.PATH:./logs}/${LOG.FILE.NAME:ms-criteria.log}
 
