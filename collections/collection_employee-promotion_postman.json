@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "03487b5a-89f8-4678-b888-aa44521b901e",
+        "_postman_id": "89d940a5-5936-4686-b9b5-8d4c78983641",
         "name": "employee-promotion",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -139,6 +139,46 @@
                                 }
                             },
                             "raw": "{\n  \"id\": \"b9590744-8ba7-4656-83c7-f7a10b48c180\",\n  \"firstname\": \"MARCO ANTONIO\",\n  \"lastname\": \"LOPEZ CAMACHO\",\n  \"address\": \"LIMA PERU\",\n  \"email\": \"MARCOLOPEZPE@OUTLOOK.COM\",\n  \"currentLevel\": \"JUNIOR\",\n  \"hireDate\": \"2018-10-16\",\n  \"certifications\": 3,\n  \"productionProjects\": 3,\n  \"leaderId\": \"5f038f98-e1f4-48be-8878-2663884a028b\",\n  \"periodLevel\": 2024\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "All Criterias ",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8765/api/criteria/criteria",
+                            "path": [
+                                "api",
+                                "criteria",
+                                "criteria"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8765"
+                        }
+                    }
+                },
+                {
+                    "name": "Criterias By Level",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8765/api/criteria/criteria/level/JUNIOR",
+                            "path": [
+                                "api",
+                                "criteria",
+                                "criteria",
+                                "level",
+                                "JUNIOR"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8765"
                         }
                     }
                 }

@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "employee-promotion",
     "collectionId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
-    "dateExported": "2024-10-28T06:10:37.389Z",
+    "dateExported": "2024-11-01T01:31:32.181Z",
     "version": "1.2",
     "folders": [
         {
@@ -50,6 +50,18 @@
     ],
     "requests": [
         {
+            "_id": "81ea5580-1b8e-47c7-8f0d-e80f52b7d173",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "78091e23-7714-4e8f-b2b4-ff54e885ad3a",
+            "name": "All Criterias ",
+            "url": "http://localhost:8765/api/criteria/criteria",
+            "method": "GET",
+            "sortNum": 5000,
+            "created": "2024-10-31T23:54:45.433Z",
+            "modified": "2024-10-31T23:55:23.975Z",
+            "headers": []
+        },
+        {
             "_id": "d2ff4181-19c6-435d-ad4f-f4923b46ec3a",
             "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
             "containerId": "b6a4e711-5276-4434-9a54-d14ef1edfad6",
@@ -59,6 +71,18 @@
             "sortNum": 6250,
             "created": "2024-10-26T02:23:45.327Z",
             "modified": "2024-10-28T05:53:33.343Z",
+            "headers": []
+        },
+        {
+            "_id": "e335d2be-6e66-4ad7-96ec-91519d9e1a8e",
+            "colId": "a681450c-40f3-4f0e-ae91-b02df481a9d7",
+            "containerId": "78091e23-7714-4e8f-b2b4-ff54e885ad3a",
+            "name": "Criterias By Level",
+            "url": "http://localhost:8765/api/criteria/criteria/level/JUNIOR",
+            "method": "GET",
+            "sortNum": 7500,
+            "created": "2024-10-31T23:55:01.926Z",
+            "modified": "2024-11-01T01:18:51.946Z",
             "headers": []
         },
         {
@@ -305,5 +329,5 @@
             "headers": []
         }
     ],
-    "ref": "aJi1frGBN9yMNMgjZapvJX4lT-8c-MxojsTrcnAjf05iufKcaZmxFs39fgiuKDdzz6jFkYQ8QadFRLBeAcGQnA"
+    "ref": "aJi1frGBN9yMNMgjZapvJbcLzB8Ox2-oAXrt2eenFJmQhVS6Cz7wQOuXFIWgnX-oWMClCn8P9FJ-VV2_r77cvA"
 }
